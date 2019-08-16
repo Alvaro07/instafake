@@ -1,16 +1,22 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Link } from '@reach/router'
-import { Context } from '../../Context'
 import { FormWrap, Input, Title, Actions } from './styles'
 import { useInputValue } from '../../hooks/useInputValue'
 
-export const UserForm = ({ title }) => {
-  const { activateAuth } = useContext(Context)
+export const UserForm = ({ title, onSubmit }) => {
   const email = useInputValue('')
   const password = useInputValue('')
 
+  const handleSubmit = e => {
+    e.preventDefault()
+    onSubmit({
+      email: email.value,
+      password: password.value
+    })
+  }
+
   return (
-    <FormWrap>
+    <FormWrap onSubmit={handleSubmit}>
       <Title>{title}</Title>
 
       <Input type="text" placeholder="Email" {...email} />
@@ -22,7 +28,8 @@ export const UserForm = ({ title }) => {
         ) : (
           <Link to="/login">Login</Link>
         )}
-        <button onClick={activateAuth}>Login</button>
+        {/* <button onClick={activateAuth}>Login</button> */}
+        <button type="submit">Login</button>
       </Actions>
     </FormWrap>
   )

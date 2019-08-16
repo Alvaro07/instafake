@@ -1,7 +1,8 @@
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
 
+  *,
   *:before,
   *:after {
     box-sizing: border-box;
@@ -22,8 +23,6 @@ export const GlobalStyle = createGlobalStyle`
   figure, figcaption, footer, header, hgroup, 
   menu, nav, output, ruby, section, summary,
   time, mark, audio, video {
-    margin: 0;
-    padding: 0;
     border: 0;
     font-size: 100%;
     font: inherit;
@@ -52,4 +51,34 @@ export const GlobalStyle = createGlobalStyle`
     border-collapse: collapse;
     border-spacing: 0;
   }
+
+  /* personal base styles */
+
+  html {
+    font-size: 62.5%;
+    height: 100%;
+  }
+
+  body {
+    min-width: 360px;
+    height: 100%;
+    min-height: 100%;
+    font-size: 1.4rem;
+    font-family: 'Roboto';
+  }
+
+  input, button, textarea {
+    font-family: "Roboto";
+  }
+
+  #app {
+    display: block;
+    height: 100%;
+    min-height: 100%;
+  }
+`
+export const PageFormWrap = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `

@@ -1,9 +1,6 @@
-import React, { Fragment } from 'react'
-import { Link } from '@reach/router'
+import React from 'react'
+import { UserForm } from '../components/UserForm'
 
 export const Register = () => {
-  return <Fragment>
-    <h2>Register</h2>
-    <Link to='/login' >login</Link>
-  </Fragment>
+  return <UserForm title='Register' />
 }

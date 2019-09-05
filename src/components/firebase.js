@@ -18,19 +18,26 @@ class Firebase {
     this.db = app.firestore()
   }
 
-  // login(email, password) {
-  //   return this.auth.signInWithEmailAndPassword(email, password)
-  // }
+  login(email, password) {
+    return new Promise((resolve, reject) => {
+      this.auth
+        .signInWithEmailAndPassword(email, password)
+        .then(() => resolve())
+        .catch(error => reject(error))
+    })
+  }
+
+  register(email, password) {
+    return new Promise((resolve, reject) => {
+      this.auth
+        .createUserWithEmailAndPassword(email, password)
+        .then(() => resolve())
+        .catch(error => reject(error))
+    })
+  }
 
   // logout() {
   //   return this.auth.signOut()
-  // }
-
-  // async register(name, email, password) {
-  //   await this.auth.createUserWithEmailAndPassword(email, password)
-  //   return this.auth.currentUser.updateProfile({
-  //     displayName: name
-  //   })
   // }
 }
 

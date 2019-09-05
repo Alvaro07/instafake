@@ -7,11 +7,8 @@ import { Home } from './pages/Home'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { Header } from './components/Header'
-import firebase from './components/firebase'
 
 function App() {
-  console.log(firebase)
-
   return (
     <Fragment>
       <ResetStyle />
@@ -21,7 +18,7 @@ function App() {
           isAuth ? (
             <Router>
               <Home path="/" />
-              <Redirect noThrow from="/login" to="/" />
+              <Redirect noThrow from="/*" to="/" />
             </Router>
           ) : (
             <Location>

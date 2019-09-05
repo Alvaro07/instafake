@@ -101,21 +101,18 @@ export const PageFormWrap = styled.div`
   max-width: 420px;
   display: flex;
   justify-content: center;
-
   padding: 30px;
-  margin-top: 10px;
-
   background-color: white;
   border-radius: 5px;
 `
 
-export const BasicLink = styled.a`
-  font-size: 1.4rem;
-  text-decoration: none;
-  font-weight: 700;
-  color: var(--silver);
+// export const BasicLink = styled.a`
+//   font-size: 1.4rem;
+//   text-decoration: none;
+//   font-weight: 700;
+//   color: var(--silver);
 
-  &:hover {
-    color: var(--orange);
-  }
-`
+//   &:hover {
+//     color: var(--orange);
+//   }
+// `

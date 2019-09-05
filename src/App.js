@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { GlobalStyle, PageFormWrap } from './styles/GlobalStyles'
+import { GlobalStyle, ResetStyle, PageFormWrap } from './styles/GlobalStyles'
 import Context from './Context'
 import { Router, Redirect, Location } from '@reach/router'
 
@@ -14,6 +14,7 @@ function App() {
 
   return (
     <Fragment>
+      <ResetStyle />
       <GlobalStyle />
       <Context.Consumer>
         {({ isAuth }) =>

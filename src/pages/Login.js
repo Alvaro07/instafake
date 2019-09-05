@@ -9,5 +9,11 @@ export const Login = () => {
     console.log(data)
   }
 
-  return <UserForm title="Login" onSubmit={data => onLogin(data)} />
+  return (
+    <UserForm
+      title="Login"
+      subTitle="Enter your email & Password and try our fully featured instafake image platform."
+      onSubmit={data => onLogin(data)}
+    />
+  )
 }

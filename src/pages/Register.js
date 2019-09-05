@@ -9,5 +9,11 @@ export const Register = () => {
     console.log(data)
   }
 
-  return <UserForm title="Register" onSubmit={data => onRegister(data)} />
+  return (
+    <UserForm
+      title="Register"
+      subTitle="Enter your email & Password and register now"
+      onSubmit={data => onRegister(data)}
+    />
+  )
 }

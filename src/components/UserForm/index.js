@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from '@reach/router'
-import { FormWrap, Input, Title, Actions } from './styles'
+import { FormWrap, Input, Title, SubTitle, Actions } from './styles'
 import { useInputValue } from '../../hooks/useInputValue'
+import { Button } from '../Button'
 
-export const UserForm = ({ title, onSubmit }) => {
+export const UserForm = ({ title, subTitle, onSubmit }) => {
   const email = useInputValue('')
   const password = useInputValue('')
 
@@ -18,19 +19,24 @@ export const UserForm = ({ title, onSubmit }) => {
   return (
     <FormWrap onSubmit={handleSubmit}>
       <Title>{title}</Title>
+      <SubTitle>{subTitle}</SubTitle>
 
       <Input type="text" placeholder="Email" {...email} />
       <Input type="password" placeholder="Password" {...password} />
 
-      <Actions>
-        {title === 'Login' ? (
+      {title === 'Login' ? (
+        <Actions>
           <Link to="/register">Register</Link>
-        ) : (
-          <Link to="/login">Login</Link>
-        )}
-        {/* <button onClick={activateAuth}>Login</button> */}
-        <button type="submit">Login</button>
-      </Actions>
+          <Button text="Sign up" />
+        </Actions>
+      ) : (
+        <Actions>
+          <Link to="/login">Sign up</Link>
+          <Button secondary text="Register" />
+        </Actions>
+      )}
+
+      {/* <button onClick={activateAuth}>Login</button> */}
     </FormWrap>
   )
 }

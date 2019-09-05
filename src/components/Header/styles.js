@@ -11,10 +11,15 @@ export const HeaderWrap = styled.header`
 
 export const Logo = styled.h1`
   font-size: 3.8rem;
-  font-family: 'Pacifico';
+  font-family: var(--pacifico);
 
   a {
     text-decoration: none;
-    color: black;
+    color: var(--grey-dark);
+    transition: 0.2s all ease;
+
+    &:hover {
+      color: var(--orange);
+    }
   }
 `

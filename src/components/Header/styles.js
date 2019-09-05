@@ -19,7 +19,7 @@ export const Logo = styled.h1`
     transition: 0.2s all ease;
 
     &:hover {
-      color: var(--orange);
+      color: var(--silver);
     }
   }
 `

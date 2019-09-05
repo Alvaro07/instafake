@@ -46,7 +46,8 @@ export const Loading = styled.div`
   background-color: rgba(255, 255, 255, 0.8);
 `
 
-export const Error = styled.p`
-  padding: 10px 0;
+export const ErrorMessage = styled.p`
+  padding-top: 15px;
   color: var(--orange);
+  text-align: center;
 `

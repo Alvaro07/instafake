@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from '@reach/router'
-import { FormWrap, Input, Title, SubTitle, Actions, Loading } from './styles'
+import { FormWrap, Input, Title, SubTitle, Actions, Loading, ErrorMessage } from './styles'
 import { useInputValue } from '../../hooks/useInputValue'
 import { Button } from '../Button'
 
-export const UserForm = ({ title, subTitle, onSubmit, isLoading }) => {
+export const UserForm = ({ title, subTitle, onSubmit, isLoading, error }) => {
   const email = useInputValue('')
   const password = useInputValue('')
 
@@ -37,6 +37,7 @@ export const UserForm = ({ title, subTitle, onSubmit, isLoading }) => {
       )}
 
       {isLoading && <Loading>loading...</Loading>}
+      {error && <ErrorMessage>{error}</ErrorMessage>}
     </FormWrap>
   )
 }

@@ -6,6 +6,7 @@ import firebase from '../components/firebase'
 export const Register = () => {
   const { activateAuth } = useContext(Context)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
 
   const onRegister = data => {
     setLoading(true)
@@ -16,8 +17,8 @@ export const Register = () => {
         activateAuth()
       })
       .catch(error => {
-        console.log(error)
         setLoading(false)
+        setError(error.message)
       })
   }
 
@@ -27,6 +28,7 @@ export const Register = () => {
       title="Register"
       subTitle="Enter your email & Password and register now"
       onSubmit={data => onRegister(data)}
+      error={error}
     />
   )
 }

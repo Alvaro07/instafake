@@ -26,7 +26,7 @@ export const Register = () => {
     <UserForm
       isLoading={loading}
       title="Register"
-      subTitle="Enter your email & Password and register now"
+      subTitle="Enter your email & Password, register now and enjoy fully instafake image platform"
       onSubmit={data => onRegister(data)}
       error={error}
     />

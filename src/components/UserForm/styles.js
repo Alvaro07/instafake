@@ -3,7 +3,22 @@ import styled from 'styled-components'
 export const FormWrap = styled.form`
   display: block;
   width: 100%;
+  max-width: 420px;
   position: relative;
+  padding: 30px;
+  background-color: white;
+  border-radius: 5px;
+`
+
+export const Logo = styled.h1`
+  font-size: 3.8rem;
+  font-family: var(--pacifico);
+  color: var(--grey-dark);
+  line-height: 1;
+  text-align: center;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  border-bottom: 1px dashed var(--grey);
 `
 
 export const Title = styled.h2`
@@ -25,6 +40,10 @@ export const Input = styled.input`
   padding: 12px 8px;
   border-radius: 3px;
   border: 1px solid var(--grey);
+
+  &:focus {
+    outline-color: var(--orange);
+  }
 `
 
 export const Actions = styled.div`

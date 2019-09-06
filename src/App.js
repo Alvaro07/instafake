@@ -1,14 +1,25 @@
-import React, { Fragment } from 'react'
-import { GlobalStyle, ResetStyle, PageFormWrap } from './styles/GlobalStyles'
-import Context from './Context'
+import React, { Fragment, useEffect, useContext } from 'react'
+import { GlobalStyle, ResetStyle } from './styles/GlobalStyles'
+import { Context } from './Context'
 import { Router, Redirect, Location } from '@reach/router'
 
 import { Home } from './pages/Home'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
-import { Header } from './components/Header'
+import firebase from './components/firebase'
 
 function App() {
+  const { activateAuth } = useContext(Context)
+
+  useEffect(() => {
+    firebase
+      .getUser()
+      .then(data => {
+        if (data) activateAuth()
+      })
+      .catch(error => console.log(error))
+  }, [activateAuth])
+
   return (
     <Fragment>
       <ResetStyle />
@@ -24,8 +35,7 @@ function App() {
             <Location>
               {({ location }) => (
                 <Fragment>
-                  <Header />
-                  <Router component={PageFormWrap}>
+                  <Router>
                     <Login path="/login" />
                     <Register path="/register" />
 

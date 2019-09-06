@@ -36,9 +36,21 @@ class Firebase {
     })
   }
 
-  // logout() {
-  //   return this.auth.signOut()
-  // }
+  logout() {
+    return this.auth.signOut()
+  }
+
+  getUser() {
+    return new Promise((resolve, reject) => {
+      this.auth.onAuthStateChanged(function(user) {
+        if (user) {
+          resolve(user)
+        } else {
+          reject('No user is signed in.')
+        }
+      })
+    })
+  }
 }
 
 export default new Firebase()

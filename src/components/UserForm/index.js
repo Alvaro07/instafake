@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from '@reach/router'
-import { FormWrap, Input, Title, SubTitle, Actions, Loading, ErrorMessage } from './styles'
+import { FormWrap, Logo, Input, Title, SubTitle, Actions, Loading, ErrorMessage } from './styles'
 import { useInputValue } from '../../hooks/useInputValue'
 import { Button } from '../Button'
 
@@ -18,6 +18,7 @@ export const UserForm = ({ title, subTitle, onSubmit, isLoading, error }) => {
 
   return (
     <FormWrap onSubmit={handleSubmit}>
+      <Logo>Instafake</Logo>
       <Title>{title}</Title>
       <SubTitle>{subTitle}</SubTitle>
 

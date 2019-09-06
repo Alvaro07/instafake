@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 
 export const ResetStyle = createGlobalStyle`
   *,
@@ -96,23 +96,3 @@ export const GlobalStyle = createGlobalStyle`
     min-height: 100%;
   }
 `
-export const PageFormWrap = styled.div`
-  width: 100%;
-  max-width: 420px;
-  display: flex;
-  justify-content: center;
-  padding: 30px;
-  background-color: white;
-  border-radius: 5px;
-`
-
-// export const BasicLink = styled.a`
-//   font-size: 1.4rem;
-//   text-decoration: none;
-//   font-weight: 700;
-//   color: var(--silver);
-
-//   &:hover {
-//     color: var(--orange);
-//   }
-// `

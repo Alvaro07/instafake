@@ -1,25 +1,33 @@
 import styled from 'styled-components'
 
-export const HeaderWrap = styled.header`
+export const StickyHeader = styled.header`
   position: sticky;
   top: 0;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 20px 0;
+  background-color: white;
+  padding: 5px 30px;
 `
 
 export const Logo = styled.h1`
-  font-size: 3.8rem;
+  font-size: 3rem;
   font-family: var(--pacifico);
 
   a {
     text-decoration: none;
-    color: var(--grey-dark);
+    color: var(--dark-grey);
     transition: 0.2s all ease;
 
     &:hover {
       color: var(--silver);
     }
   }
+`
+
+export const Wrap = styled.div`
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `

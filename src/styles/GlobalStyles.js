@@ -1,64 +1,41 @@
 import { createGlobalStyle } from 'styled-components'
 
 export const ResetStyle = createGlobalStyle`
-  *,
-  *:before,
-  *:after {
+  html {
     box-sizing: border-box;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  body, h1, h2, h3, h4, h5, h6, p, ol, ul {
     margin: 0;
     padding: 0;
+    font-weight: normal;
   }
 
-  html, body, div, span, applet, object, iframe,
-  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-  a, abbr, acronym, address, big, cite, code,
-  del, dfn, em, img, ins, kbd, q, s, samp,
-  small, strike, strong, sub, sup, tt, var,
-  b, u, i, center,
-  dl, dt, dd, ol, ul, li,
-  fieldset, form, label, legend,
-  table, caption, tbody, tfoot, thead, tr, th, td,
-  article, aside, canvas, details, embed, 
-  figure, figcaption, footer, header, hgroup, 
-  menu, nav, output, ruby, section, summary,
-  time, mark, audio, video {
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-  }
-
-  article, aside, details, figcaption, figure, 
-  footer, header, hgroup, menu, nav, section {
-    display: block;
-  }
-  body {
-    line-height: 1;
-  }
   ol, ul {
     list-style: none;
   }
-  blockquote, q {
-    quotes: none;
-  }
-  blockquote:before, blockquote:after,
-  q:before, q:after {
-    content: '';
-    content: none;
-  }
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
+
+  img {
+    max-width: 100%;
+    height: auto;
   }
 `
 
 export const GlobalStyle = createGlobalStyle`
   :root {
     --orange: #FF8F56;
+    --dark-orange: #D36A33;
+    --green: #5EC165;
+    --dark-green: #588258;
+    --wine: #C4515B;
     --silver: #8EA6B4;
     --light-grey: #E7EFF3;
     --grey: #d2d2d2;
-    --grey-dark: #333;
+    --dark-grey: #333;
 
     --open-sans: 'Open Sans', sans-serif;
     --pacifico: 'Pacifico';
@@ -88,11 +65,15 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   #app {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     height: 100%;
     min-height: 100%;
+  }
+
+  .login-wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `

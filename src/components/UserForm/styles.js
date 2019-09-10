@@ -13,7 +13,7 @@ export const FormWrap = styled.form`
 export const Logo = styled.h1`
   font-size: 3.8rem;
   font-family: var(--pacifico);
-  color: var(--grey-dark);
+  color: var(--dark-grey);
   line-height: 1;
   text-align: center;
   padding-bottom: 30px;
@@ -67,6 +67,6 @@ export const Loading = styled.div`
 
 export const ErrorMessage = styled.p`
   padding-top: 15px;
-  color: var(--orange);
+  color: var(--wine);
   text-align: center;
 `

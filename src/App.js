@@ -1,12 +1,12 @@
 import React, { Fragment, useEffect, useContext } from 'react'
-import { GlobalStyle, ResetStyle } from './styles/GlobalStyles'
+import firebase from './components/firebase'
 import { Context } from './Context'
 import { Router, Redirect, Location } from '@reach/router'
 
+import { GlobalStyle, ResetStyle } from './styles/GlobalStyles'
 import { Home } from './pages/Home'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
-import firebase from './components/firebase'
 
 function App() {
   const { activateAuth } = useContext(Context)
@@ -35,7 +35,7 @@ function App() {
             <Location>
               {({ location }) => (
                 <Fragment>
-                  <Router>
+                  <Router className="login-wrap">
                     <Login path="/login" />
                     <Register path="/register" />
 

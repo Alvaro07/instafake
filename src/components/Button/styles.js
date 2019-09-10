@@ -12,11 +12,11 @@ export const ButtonTag = styled.button`
   border: none;
   border-radius: 3px;
   cursor: pointer;
-  transition: 0.3s all ease;
+  transition: 0.1s all ease;
   background-color: var(--orange);
 
   &:hover {
-    background-color: var(--silver);
+    background-color: var(--dark-orange);
   }
 
   /*
@@ -26,9 +26,9 @@ export const ButtonTag = styled.button`
   ${props =>
     props.secondary &&
     css`
-      background-color: var(--grey-dark);
+      background-color: var(--green);
       &:hover {
-        background-color: var(--silver);
+        background-color: var(--dark-green);
       }
     `}
 `

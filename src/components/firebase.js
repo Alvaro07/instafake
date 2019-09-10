@@ -18,6 +18,10 @@ class Firebase {
     this.db = app.firestore()
   }
 
+  /**
+   * Login function
+   */
+
   login(email, password) {
     return new Promise((resolve, reject) => {
       this.auth
@@ -26,6 +30,12 @@ class Firebase {
         .catch(error => reject(error))
     })
   }
+
+  /**
+   * Register function
+   * @param {string} email - The user email.
+   * @param {string} password - The user password.
+   */
 
   register(email, password) {
     return new Promise((resolve, reject) => {
@@ -36,9 +46,18 @@ class Firebase {
     })
   }
 
+  /**
+   * Logout function
+   */
+
   logout() {
     return this.auth.signOut()
   }
+
+  /**
+   * Get user function
+   * @returns {string} The user.
+   */
 
   getUser() {
     return new Promise((resolve, reject) => {

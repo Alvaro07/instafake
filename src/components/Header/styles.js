@@ -6,6 +6,7 @@ export const StickyHeader = styled.header`
   width: 100%;
   background-color: white;
   padding: 5px 30px;
+  box-shadow: 0 1px 2px rgba(74, 74, 74, 0.1);
 `
 
 export const Logo = styled.h1`

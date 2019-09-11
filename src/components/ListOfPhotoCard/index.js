@@ -8,7 +8,7 @@ export const ListOfPhotoCard = ({ photos = [1, 2, 3, 4] }) => {
       <List>
         {photos.map((data, i) => (
           <PhotoCard
-            src="https://www.rspcapetinsurance.org.au/RSPCA/media/Images/Hero/cat-insurance-hero.jpg"
+            src="https://www.petmd.com/sites/default/files/Acute-Dog-Diarrhea-47066074.jpg"
             title="#hastag #hastag Etiam vel lacus a dui ornare fringilla nec eu nibh. Nullam eget porta orci. Nulla ullamcorper vehicula scelerisque."
             key={i}
           />

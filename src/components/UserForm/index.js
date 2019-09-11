@@ -1,8 +1,18 @@
 import React from 'react'
 import { Link } from '@reach/router'
-import { FormWrap, Logo, Input, Title, SubTitle, Actions, Loading, ErrorMessage } from './styles'
+import {
+  FormWrap,
+  Logo,
+  Input,
+  Title,
+  SubTitle,
+  Actions,
+  LoadingWrap,
+  ErrorMessage
+} from './styles'
 import { useInputValue } from '../../hooks/useInputValue'
 import { Button } from '../Button'
+import { Loader } from '../Loader'
 
 export const UserForm = ({ title, subTitle, onSubmit, isLoading, error }) => {
   const email = useInputValue('')
@@ -37,7 +47,12 @@ export const UserForm = ({ title, subTitle, onSubmit, isLoading, error }) => {
         </Actions>
       )}
 
-      {isLoading && <Loading>loading...</Loading>}
+      {isLoading && (
+        <LoadingWrap>
+          <Loader />
+        </LoadingWrap>
+      )}
+
       {error && <ErrorMessage>{error}</ErrorMessage>}
     </FormWrap>
   )

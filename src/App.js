@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useContext } from 'react'
+import React, { Fragment, useEffect, useContext, useState } from 'react'
 import firebase from './components/firebase'
 import { Context } from './Context'
 import { Router, Redirect, Location } from '@reach/router'
@@ -7,23 +7,41 @@ import { GlobalStyle, ResetStyle } from './styles/GlobalStyles'
 import { Home } from './pages/Home'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
+import { Loader } from './components/Loader'
 
 function App() {
   const { activateAuth } = useContext(Context)
+  const [initializing, setInitializing] = useState(true)
 
   useEffect(() => {
     firebase
       .getUser()
       .then(data => {
-        if (data) activateAuth()
+        if (data) {
+          activateAuth()
+          setInitializing(false)
+        }
       })
-      .catch(error => console.log(error))
+      .catch(() => {
+        setInitializing(false)
+      })
   }, [activateAuth])
+
+  if (initializing) {
+    return (
+      <Fragment>
+        <ResetStyle />
+        <GlobalStyle />
+        <Loader />
+      </Fragment>
+    )
+  }
 
   return (
     <Fragment>
       <ResetStyle />
       <GlobalStyle />
+
       <Context.Consumer>
         {({ isAuth }) =>
           isAuth ? (

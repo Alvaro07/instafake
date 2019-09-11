@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import { MdFavoriteBorder, MdFavorite } from 'react-icons/md'
+import { FaRegComment } from 'react-icons/fa'
 
 export const ListCard = styled.li`
   margin-bottom: 30px;
@@ -15,10 +17,39 @@ export const Image = styled.img`
 `
 
 export const Footer = styled.div`
-  padding: 15px;
+  padding: 10px 15px 20px;
   background-color: white;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+`
+
+export const Icons = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+`
+
+export const IconLike = styled(MdFavoriteBorder)`
+  cursor: pointer;
+  transition: 0.2s all ease;
+
+  &:hover {
+    color: var(--wine);
+  }
+`
+
+export const IconIsLiked = styled(MdFavorite)`
+  color: var(--wine);
+`
+
+export const IconComment = styled(FaRegComment)`
+  cursor: pointer;
+  transition: 0.2s all ease;
+
+  &:hover {
+    color: var(--wine);
+  }
 `
 
 export const LikesText = styled.p`

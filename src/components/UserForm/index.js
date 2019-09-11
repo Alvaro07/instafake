@@ -1,15 +1,5 @@
 import React from 'react'
-import { Link } from '@reach/router'
-import {
-  FormWrap,
-  Logo,
-  Input,
-  Title,
-  SubTitle,
-  Actions,
-  LoadingWrap,
-  ErrorMessage
-} from './styles'
+import { StyledLink, FormWrap, Logo, Input, Title, SubTitle, Actions, LoadingWrap, ErrorMessage } from './styles'
 import { useInputValue } from '../../hooks/useInputValue'
 import { Button } from '../Button'
 import { Loader } from '../Loader'
@@ -37,12 +27,12 @@ export const UserForm = ({ title, subTitle, onSubmit, isLoading, error }) => {
 
       {title === 'Login' ? (
         <Actions>
-          <Link to="/register">Register</Link>
+          <StyledLink to="/register">Register</StyledLink>
           <Button text="Sign up" />
         </Actions>
       ) : (
         <Actions>
-          <Link to="/login">Sign up</Link>
+          <StyledLink to="/login">Sign up</StyledLink>
           <Button secondary text="Register" />
         </Actions>
       )}

@@ -1,4 +1,15 @@
 import styled from 'styled-components'
+import { Link } from '@reach/router'
+
+export const StyledLink = styled(Link)`
+  color: var(--dark-grey);
+  font-weight: bold;
+  transition: 0.3s all ease;
+
+  &:hover {
+    color: var(--dark-orange);
+  }
+`
 
 export const FormWrap = styled.form`
   position: relative;

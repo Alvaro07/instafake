@@ -33,7 +33,7 @@ export const UserForm = ({ title, subTitle, onSubmit, isLoading, error }) => {
       ) : (
         <Actions>
           <StyledLink to="/login">Sign up</StyledLink>
-          <Button secondary text="Register" />
+          <Button secondary text="Register and sign up" />
         </Actions>
       )}
 

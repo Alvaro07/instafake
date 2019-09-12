@@ -7,10 +7,11 @@ import { GlobalStyle, ResetStyle } from './styles/GlobalStyles'
 import { Home } from './pages/Home'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
+import { NotFound } from './pages/NotFound'
 import { Loader } from './components/Loader'
 
 function App() {
-  const { activateAuth } = useContext(Context)
+  const { activateAuth, isAuth } = useContext(Context)
   const [initializing, setInitializing] = useState(true)
 
   useEffect(() => {
@@ -27,46 +28,34 @@ function App() {
       })
   }, [activateAuth])
 
-  if (initializing) {
-    return (
-      <Fragment>
-        <ResetStyle />
-        <GlobalStyle />
-        <Loader />
-      </Fragment>
-    )
-  }
-
   return (
     <Fragment>
       <ResetStyle />
       <GlobalStyle />
 
-      <Context.Consumer>
-        {({ isAuth }) =>
-          isAuth ? (
-            <Router>
-              <Home path="/" />
-              <Redirect noThrow from="/*" to="/" />
-            </Router>
-          ) : (
-            <Location>
-              {({ location }) => (
-                <Fragment>
-                  <Router className="login-wrap">
-                    <Login path="/login" />
-                    <Register path="/register" />
+      {initializing ? (
+        <Loader />
+      ) : isAuth ? (
+        <Router>
+          <NotFound default />
+          <Home path="/" />
+          <Redirect noThrow from="/login" to="/" />
+          <Redirect noThrow from="/register" to="/" />
+        </Router>
+      ) : (
+        <Location>
+          {({ location }) => (
+            <Fragment>
+              <Router className="login-wrap">
+                <Login path="/login" />
+                <Register path="/register" />
 
-                    {location.pathname !== '/register' && (
-                      <Redirect noThrow from="/*" to="/login" />
-                    )}
-                  </Router>
-                </Fragment>
-              )}
-            </Location>
-          )
-        }
-      </Context.Consumer>
+                {location.pathname !== '/register' && <Redirect noThrow from="/*" to="/login" />}
+              </Router>
+            </Fragment>
+          )}
+        </Location>
+      )}
     </Fragment>
   )
 }

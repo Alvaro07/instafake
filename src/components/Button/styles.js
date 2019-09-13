@@ -1,7 +1,9 @@
 import styled, { css } from 'styled-components'
 
 export const ButtonTag = styled.button`
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+
   width: ${props => (props.fullWidth ? '100%' : null)};
   padding: 10px 15px;
 
@@ -17,6 +19,10 @@ export const ButtonTag = styled.button`
 
   &:hover {
     background-color: var(--dark-orange);
+  }
+
+  & svg:not(:last-child) {
+    margin-right: 10px;
   }
 
   /*

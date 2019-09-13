@@ -1,6 +1,6 @@
 # Instafake
 
-A simulated IG app developed with React
+A simulated IG app developed with React + Firebase
 
 ---
 

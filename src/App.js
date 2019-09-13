@@ -3,7 +3,7 @@ import firebase from './components/firebase'
 import { Context } from './Context'
 import { Router, Redirect, Location } from '@reach/router'
 
-import { GlobalStyle, ResetStyle } from './styles/GlobalStyles'
+import { GlobalStyle, ResetStyle, PageWrap } from './styles/GlobalStyles'
 import { Home } from './pages/Home'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
@@ -29,7 +29,7 @@ function App() {
   }, [activateAuth])
 
   return (
-    <Fragment>
+    <PageWrap>
       <ResetStyle />
       <GlobalStyle />
 
@@ -56,7 +56,7 @@ function App() {
           )}
         </Location>
       )}
-    </Fragment>
+    </PageWrap>
   )
 }
 

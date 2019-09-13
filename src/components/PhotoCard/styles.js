@@ -3,9 +3,11 @@ import { MdFavoriteBorder, MdFavorite } from 'react-icons/md'
 import { FaRegComment } from 'react-icons/fa'
 
 export const ListCard = styled.li`
-  margin-bottom: 30px;
   border-radius: 5px;
   box-shadow: 0 1px 2px rgba(74, 74, 74, 0.1);
+  &:not(:last-child) {
+    margin-bottom: 30px;
+  }
 `
 
 export const Image = styled.img`

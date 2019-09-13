@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
 export const ResetStyle = createGlobalStyle`
   html {
@@ -68,6 +68,7 @@ export const GlobalStyle = createGlobalStyle`
   #app {
     height: 100%;
     min-height: 100%;
+    overflow: hidden;
   }
 
   .login-wrap {
@@ -77,4 +78,11 @@ export const GlobalStyle = createGlobalStyle`
     align-items: center;
     justify-content: center;
   }
+  
+`
+
+export const PageWrap = styled.div`
+  height: 100%;
+  min-height: 100%;
+  overflow: auto;
 `

@@ -12,6 +12,8 @@ export const StickyHeader = styled.header`
 export const Logo = styled.h1`
   font-size: 3rem;
   font-family: var(--pacifico);
+  flex: 1;
+  padding-right: 15px;
 
   a {
     text-decoration: none;
@@ -31,4 +33,10 @@ export const Wrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`
+
+export const UserName = styled.h3`
+  font-size: 14px;
+  font-weight: 700;
+  margin-right: 15px;
 `

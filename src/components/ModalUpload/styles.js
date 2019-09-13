@@ -10,8 +10,8 @@ export const ModalContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
   background: white;
+  padding: 20px;
 `
 
 export const CloseButton = styled.button`
@@ -32,13 +32,15 @@ export const CloseButton = styled.button`
   transition: 0.2s all ease;
 
   &:hover {
-    color: var(--orange);
+    color: var(--wine);
   }
 `
 
 export const Form = styled.form`
-  padding: 10px;
+  padding: 30px;
   max-width: 450px;
+  border: 1px dashed var(--grey);
+  border-radius: 5px;
 `
 
 export const Title = styled.h2`
@@ -60,4 +62,7 @@ export const Textarea = styled.textarea`
   display: block;
   width: 100%;
   min-height: 80px;
+  padding: 12px 8px;
+  border-radius: 3px;
+  border: 1px solid var(--grey);
 `

@@ -11,7 +11,7 @@ import { NotFound } from './pages/NotFound'
 import { Loader } from './components/Loader'
 
 function App() {
-  const { activateAuth, isAuth } = useContext(Context)
+  const { activateAuth, isAuth, user, addUser } = useContext(Context)
   const [initializing, setInitializing] = useState(true)
 
   useEffect(() => {
@@ -19,6 +19,7 @@ function App() {
       .getUser()
       .then(data => {
         if (data) {
+          if (!user) addUser({ email: data.email, name: data.displayName })
           activateAuth()
           setInitializing(false)
         }
@@ -26,7 +27,7 @@ function App() {
       .catch(() => {
         setInitializing(false)
       })
-  }, [activateAuth])
+  }, [activateAuth, addUser, user])
 
   return (
     <PageWrap>

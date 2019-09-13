@@ -1,12 +1,12 @@
-import React, { useContext } from 'react'
+import React, { useContext, Fragment } from 'react'
 import firebase from '../firebase'
 import { Link } from '@reach/router'
 import { Context } from '../../Context'
-import { StickyHeader, Logo, Wrap } from './styles'
+import { StickyHeader, Logo, Wrap, UserName } from './styles'
 import { Button } from '../Button'
 
 export const Header = () => {
-  const { removeAuth } = useContext(Context)
+  const { removeAuth, user } = useContext(Context)
 
   const signOut = () => {
     firebase.logout()
@@ -21,7 +21,10 @@ export const Header = () => {
             Instafake
           </Link>
         </Logo>
-        <Button text="Log out" onClick={signOut} />
+        <Fragment>
+          <UserName>{user.name ? user.name : user.email}</UserName>
+          <Button text="Log out" onClick={signOut} />
+        </Fragment>
       </Wrap>
     </StickyHeader>
   )

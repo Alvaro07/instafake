@@ -4,7 +4,7 @@ import { MdPhotoCamera } from 'react-icons/md'
 import { ModalUpload } from '../ModalUpload'
 
 export const UploadPhoto = () => {
-  const [modalIsOpen, setModalIsOpen] = useState(true)
+  const [modalIsOpen, setModalIsOpen] = useState(false)
 
   return (
     <Fragment>

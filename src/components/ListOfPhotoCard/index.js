@@ -6,8 +6,8 @@ import { Container, List } from './styles'
 export const ListOfPhotoCard = ({ photos = [1, 2, 3, 4, 5, 6, 7, 8, 9] }) => {
   return (
     <Container>
+      <UploadPhoto />
       <List>
-        <UploadPhoto />
         {photos.map((data, i) => (
           <PhotoCard
             src="https://www.petmd.com/sites/default/files/Acute-Dog-Diarrhea-47066074.jpg"

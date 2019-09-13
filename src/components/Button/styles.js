@@ -37,4 +37,11 @@ export const ButtonTag = styled.button`
         background-color: var(--dark-green);
       }
     `}
+
+  ${props =>
+    props.round &&
+    css`
+      border-radius: 50%;
+      padding: 10px;
+    `}
 `

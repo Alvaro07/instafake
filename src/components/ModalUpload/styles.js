@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { mediaQueries } from '../../styles/variables'
 
 export const ModalContent = styled.div`
   position: fixed;
@@ -12,6 +13,7 @@ export const ModalContent = styled.div`
   justify-content: center;
   background: white;
   padding: 20px;
+  z-index: 10;
 `
 
 export const CloseButton = styled.button`
@@ -37,10 +39,13 @@ export const CloseButton = styled.button`
 `
 
 export const Form = styled.form`
-  padding: 30px;
   max-width: 450px;
-  border: 1px dashed var(--grey);
-  border-radius: 5px;
+
+  @media (min-width: ${mediaQueries.medium}) {
+    padding: 30px;
+    border: 1px dashed var(--grey);
+    border-radius: 5px;
+  }
 `
 
 export const Title = styled.h2`

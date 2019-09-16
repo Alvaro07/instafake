@@ -1,16 +1,19 @@
 import styled from 'styled-components'
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md'
 import { FaRegComment } from 'react-icons/fa'
+import { fadeIn } from '../../styles/animation'
 
 export const ListCard = styled.li`
   border-radius: 5px;
   box-shadow: 0 1px 2px rgba(74, 74, 74, 0.1);
+  min-height: 350px;
   &:not(:last-child) {
     margin-bottom: 30px;
   }
 `
 
 export const Image = styled.img`
+  ${fadeIn()}
   max-width: 100%;
   width: 100%;
   display: block;

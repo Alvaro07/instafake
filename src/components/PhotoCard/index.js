@@ -4,12 +4,10 @@ import { ListCard, Image, Footer, LikesText, TitleText, Icons, IconLike, IconIsL
 export const PhotoCard = ({ id, src, likes = 0, title, isLike }) => {
   const element = useRef(null)
   const [show, setShow] = useState(false)
-
-  const Icon = isLike ? IconIsLiked : IconLike
+  const IconHeart = isLike ? IconIsLiked : IconLike
 
   useEffect(() => {
     const observer = new window.IntersectionObserver(entries => {
-      console.log(entries)
       const { isIntersecting } = entries[0]
       if (isIntersecting) {
         setShow(true)
@@ -26,7 +24,7 @@ export const PhotoCard = ({ id, src, likes = 0, title, isLike }) => {
           <Image src={src} alt={title} />
           <Footer>
             <Icons>
-              <Icon size="24px" />
+              <IconHeart size="24px" />
               <IconComment size="22px" />
             </Icons>
             <LikesText>{`${likes} like${likes > 1 || likes === 0 ? `s` : ``}`}</LikesText>

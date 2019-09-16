@@ -41,7 +41,18 @@ class Firebase {
     return new Promise((resolve, reject) => {
       this.auth
         .createUserWithEmailAndPassword(email, password)
-        .then(() => resolve())
+        .then(() => {
+          this.db
+            .collection('users')
+            .doc(email)
+            .set({
+              email: email,
+              name: null,
+              following: [],
+              images: []
+            })
+            .then(() => resolve())
+        })
         .catch(error => reject(error))
     })
   }
@@ -70,6 +81,23 @@ class Firebase {
       })
     })
   }
+
+  /**
+   * Get data function
+   * @returns {string} The user.
+   */
+
+  // getData() {
+  //   this.db
+  //     .collection('prueba')
+  //     .get()
+  //     .then(querySnapshot => {
+  //       querySnapshot.forEach(doc => {
+  //         console.log(doc.data())
+  //         console.log(`${doc.id} => ${doc.data()}`)
+  //       })
+  //     })
+  // }
 }
 
 export default new Firebase()

@@ -19,7 +19,9 @@ function App() {
       .getUser()
       .then(data => {
         if (data) {
-          if (!user) addUser({ email: data.email, name: data.displayName })
+          if (!user || data.email !== user.email) {
+            addUser({ email: data.email, name: data.displayName })
+          }
           activateAuth()
           setInitializing(false)
         }
@@ -27,7 +29,7 @@ function App() {
       .catch(() => {
         setInitializing(false)
       })
-  }, [activateAuth, addUser, user])
+  }, [activateAuth, isAuth, user, addUser])
 
   return (
     <PageWrap>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyledLink, FormWrap, Logo, Input, Title, SubTitle, Actions, LoadingWrap, ErrorMessage } from './styles'
+import { StyledLink, FormWrap, Logo, Input, Title, SubTitle, Actions, ErrorMessage } from './styles'
 import { useInputValue } from '../../hooks/useInputValue'
 import { Button } from '../Button'
 import { Loader } from '../Loader'
@@ -37,11 +37,7 @@ export const UserForm = ({ title, subTitle, onSubmit, isLoading, error }) => {
         </Actions>
       )}
 
-      {isLoading && (
-        <LoadingWrap>
-          <Loader />
-        </LoadingWrap>
-      )}
+      {isLoading && <Loader fullContainer opacityBg />}
 
       {error && <ErrorMessage>{error}</ErrorMessage>}
     </FormWrap>

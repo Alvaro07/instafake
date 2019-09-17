@@ -44,4 +44,18 @@ export const ButtonTag = styled.button`
       border-radius: 50%;
       padding: 10px;
     `}
+
+  /*
+   * Disabled styles
+   */
+
+  ${props =>
+    props.disabled &&
+    css`
+      cursor: default;
+      pointer-events: none;
+      background-color: var(--grey);
+    `}
+
+
 `

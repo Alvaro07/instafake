@@ -111,16 +111,20 @@ class Firebase {
               description: description,
               url: downloadURL,
               path: task.snapshot.ref.fullPath,
-              timestamp: timestamp
+              timestamp: timestamp,
+              likes: [],
+              comments: []
             }
 
-            this.getData('users', user).then(data => {
-              this.db
-                .collection('users')
-                .doc(user)
-                .set({ photos: [...data.photos, record] }, { merge: true })
-              resolve()
-            })
+            this.getData('users', user)
+              .then(data => {
+                this.db
+                  .collection('users')
+                  .doc(user)
+                  .set({ photos: [...data.photos, record] }, { merge: true })
+                resolve()
+              })
+              .catch(error => reject(error))
           })
         }
       )

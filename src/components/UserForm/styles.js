@@ -65,15 +65,6 @@ export const Actions = styled.div`
   align-items: center;
 `
 
-export const LoadingWrap = styled.div`
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
-`
-
 export const ErrorMessage = styled.p`
   padding-top: 15px;
   color: var(--wine);

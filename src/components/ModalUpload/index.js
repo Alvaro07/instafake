@@ -1,17 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { Context } from '../../Context'
 import firebase from '../firebase'
-import {
-  ModalContent,
-  CloseButton,
-  Form,
-  Title,
-  FormLine,
-  Label,
-  Textarea,
-  Error,
-  LoadingWrap
-} from './styles'
+import { ModalContent, CloseButton, Form, Title, FormLine, Label, Textarea, Error } from './styles'
 import { Button } from '../Button'
 import { Loader } from '../Loader'
 
@@ -47,9 +37,10 @@ export const ModalUpload = ({ onClose }) => {
   const handleSubmit = e => {
     e.preventDefault()
     setLoading(true)
-    firebase.uploadPhoto(image.file, description, user.email).then(() => {
-      onClose()
-    })
+    firebase
+      .uploadPhoto(image.file, description, user.email)
+      .then(() => onClose())
+      .catch(error => console.error(error))
   }
 
   return (
@@ -76,13 +67,11 @@ export const ModalUpload = ({ onClose }) => {
           )}
         </FormLine>
 
-        <FormLine>{description && image && <Button text="Upload image" secondary />}</FormLine>
+        <FormLine>
+          <Button text="Upload image" secondary disabled={description && image ? null : true} />
+        </FormLine>
 
-        {loading && (
-          <LoadingWrap>
-            <Loader />
-          </LoadingWrap>
-        )}
+        {loading && <Loader fullContainer opacityBg />}
       </Form>
     </ModalContent>
   )

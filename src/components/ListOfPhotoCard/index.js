@@ -1,20 +1,24 @@
 import React from 'react'
-import { PhotoCard } from '../PhotoCard'
-import { UploadPhoto } from '../UploadPhoto'
-import { Container, List } from './styles'
+import firebase from '../firebase'
+import { useCollectionData } from 'react-firebase-hooks/firestore'
 
-export const ListOfPhotoCard = ({ photos = [1, 2, 3, 4, 5, 6, 7, 8, 9] }) => {
+import { PhotoCard } from '../PhotoCard'
+import { UploadPhotoButton } from '../UploadPhotoButton'
+import { Container, List } from './styles'
+import { Loader } from '../Loader'
+
+export const ListOfPhotoCard = () => {
+  const [value, loading] = useCollectionData(firebase.db.collection('users'))
+
   return (
     <Container>
-      <UploadPhoto />
+      <UploadPhotoButton />
       <List>
-        {photos.map((data, i) => (
-          <PhotoCard
-            src="https://www.petmd.com/sites/default/files/Acute-Dog-Diarrhea-47066074.jpg"
-            title="#hastag #hastag Etiam vel lacus a dui ornare fringilla nec eu nibh. Nullam eget porta orci. Nulla ullamcorper vehicula scelerisque."
-            key={i}
-          />
-        ))}
+        {loading && <Loader fullContainer fixed />}
+        {value &&
+          value[0].photos
+            .reverse()
+            .map((data, i) => <PhotoCard src={data.url} title={data.description} key={i} />)}
       </List>
     </Container>
   )

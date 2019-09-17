@@ -71,3 +71,16 @@ export const Textarea = styled.textarea`
   border-radius: 3px;
   border: 1px solid var(--grey);
 `
+
+export const Error = styled.p`
+  color: var(--wine);
+`
+
+export const LoadingWrap = styled.div`
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+`

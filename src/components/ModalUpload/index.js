@@ -1,13 +1,55 @@
-import React, { useState } from 'react'
-import { ModalContent, CloseButton, Form, Title, FormLine, Label, Textarea } from './styles'
+import React, { useState, useContext } from 'react'
+import { Context } from '../../Context'
+import firebase from '../firebase'
+import {
+  ModalContent,
+  CloseButton,
+  Form,
+  Title,
+  FormLine,
+  Label,
+  Textarea,
+  Error,
+  LoadingWrap
+} from './styles'
 import { Button } from '../Button'
+import { Loader } from '../Loader'
 
 export const ModalUpload = ({ onClose }) => {
-  const [data, setData] = useState({ description: '', image: '' })
+  const [description, setDescription] = useState('')
+  const [image, setImage] = useState(false)
+  const [error, setError] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+  const { user } = useContext(Context)
+
+  /**
+   * On change in upload input
+   */
+
+  const handleUpload = e => {
+    const file = e.target.files[0]
+
+    if (file.type === 'image/png' || file.type === 'image/jpeg' || file.type === 'image/jpg') {
+      const reader = new FileReader()
+      reader.onloadend = e => setImage({ src: reader.result, file })
+      reader.readAsDataURL(file)
+      setError(false)
+    } else {
+      setError('Invalid file format')
+    }
+  }
+
+  /**
+   * On submit on button click
+   */
 
   const handleSubmit = e => {
     e.preventDefault()
-    console.log(data)
+    setLoading(true)
+    firebase.uploadPhoto(image.file, description, user.email).then(() => {
+      onClose()
+    })
   }
 
   return (
@@ -16,20 +58,31 @@ export const ModalUpload = ({ onClose }) => {
       <Form>
         <Title>Upload your photo</Title>
         <p>Choose your photo and upload it to instafake to share it with your friends</p>
+
         <FormLine>
           <Label>Write a description</Label>
-          <Textarea
-            defaultValue={data.description}
-            onChange={e => setData({ ...data, description: e.target.value })}
-          ></Textarea>
+          <Textarea defaultValue={description} onChange={e => setDescription(e.target.value)}></Textarea>
         </FormLine>
+
         <FormLine>
           <Label>Your image:</Label>
-          <input type="file" />
+          {image.src && <img src={image.src} alt={description} />}
+          <input type="file" onChange={e => handleUpload(e)} accept="image/gif, image/jpeg, image/png" />
+
+          {error && (
+            <FormLine>
+              <Error>{error}</Error>
+            </FormLine>
+          )}
         </FormLine>
-        <FormLine>
-          <Button text="Upload image" secondary />
-        </FormLine>
+
+        <FormLine>{description && image && <Button text="Upload image" secondary />}</FormLine>
+
+        {loading && (
+          <LoadingWrap>
+            <Loader />
+          </LoadingWrap>
+        )}
       </Form>
     </ModalContent>
   )

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Wrap, LoaderAnimated } from './styles'
 
-export const Loader = () => {
+export const Loader = ({ container }) => {
   return (
     <Wrap>
       <LoaderAnimated></LoaderAnimated>

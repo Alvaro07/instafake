@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cd1d1ddac96ed3c3654516456e8421f7",
+    "revision": "9beb56b7f59a8a3d75379330c6cd94c6",
     "url": "/instafake/index.html"
   },
   {

@@ -1,8 +1,9 @@
 import React from 'react'
-import { StyledLink, FormWrap, Logo, Input, Title, SubTitle, Actions, ErrorMessage } from './styles'
 import { useInputValue } from '../../hooks/useInputValue'
 import { Button } from '../Button'
 import { Loader } from '../Loader'
+import { FormWrap, Logo, Input, Title, SubTitle, Actions, ErrorMessage } from './styles'
+import { StyledLink } from '../../styles/GlobalStyles'
 
 export const UserForm = ({ title, subTitle, onSubmit, isLoading, error }) => {
   const email = useInputValue('')

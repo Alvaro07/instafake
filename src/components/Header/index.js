@@ -4,6 +4,7 @@ import { Link } from '@reach/router'
 import { Context } from '../../Context'
 import { StickyHeader, Logo, Wrap, UserName } from './styles'
 import { Button } from '../Button'
+import { StyledLink } from '../../styles/GlobalStyles'
 
 export const Header = () => {
   const { removeAuth, user } = useContext(Context)
@@ -23,7 +24,7 @@ export const Header = () => {
         </Logo>
         <Fragment>
           <UserName>
-            <Link to={`${process.env.PUBLIC_URL}/profile`}>{user.name ? user.name : user.email}</Link>
+            <StyledLink to={`${process.env.PUBLIC_URL}/profile`}>{user.name ? user.name : user.email}</StyledLink>
           </UserName>
           <Button text="Log out" onClick={signOut} />
         </Fragment>

@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components'
+import { Link } from '@reach/router'
 
 export const ResetStyle = createGlobalStyle`
   html {
@@ -88,4 +89,14 @@ export const PageWrap = styled.div`
   height: 100%;
   min-height: 100%;
   overflow: auto;
+`
+
+export const StyledLink = styled(Link)`
+  color: var(--dark-grey);
+  font-weight: bold;
+  transition: 0.3s all ease;
+
+  &:hover {
+    color: var(--dark-orange);
+  }
 `

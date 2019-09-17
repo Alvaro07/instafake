@@ -27,12 +27,12 @@ export const UserForm = ({ title, subTitle, onSubmit, isLoading, error }) => {
 
       {title === 'Login' ? (
         <Actions>
-          <StyledLink to="/register">Register</StyledLink>
+          <StyledLink to={`${process.env.PUBLIC_URL}/register`}>Register</StyledLink>
           <Button text="Sign up" />
         </Actions>
       ) : (
         <Actions>
-          <StyledLink to="/login">Sign up</StyledLink>
+          <StyledLink to={`${process.env.PUBLIC_URL}/login`}>Sign up</StyledLink>
           <Button secondary text="Register and sign up" />
         </Actions>
       )}

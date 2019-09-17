@@ -1,7 +1,7 @@
 {
   "name": "instafake",
   "version": "0.1.0",
-  "homepage": "https://alvaro07.github.io/instafake/",
+  "homepage": "https://alvaro07.github.io/instafake",
   "private": true,
   "scripts": {
     "start": "react-scripts start",

@@ -41,19 +41,25 @@ function App() {
       ) : isAuth ? (
         <Router>
           <NotFound default />
-          <Home path="/" />
-          <Redirect noThrow from="/login" to="/" />
-          <Redirect noThrow from="/register" to="/" />
+          <Home path={`${process.env.PUBLIC_URL}/`} />
+          <Redirect noThrow from={`${process.env.PUBLIC_URL}/login`} to={`${process.env.PUBLIC_URL}/`} />
+          <Redirect noThrow from={`${process.env.PUBLIC_URL}/register`} to={`${process.env.PUBLIC_URL}/`} />
         </Router>
       ) : (
         <Location>
           {({ location }) => (
             <Fragment>
               <Router className="login-wrap">
-                <Login path="/login" />
-                <Register path="/register" />
+                <Login path={`${process.env.PUBLIC_URL}/login`} />
+                <Register path={`${process.env.PUBLIC_URL}/register`} />
 
-                {location.pathname !== '/register' && <Redirect noThrow from="/*" to="/login" />}
+                {location.pathname !== `${process.env.PUBLIC_URL}/register` && (
+                  <Redirect
+                    noThrow
+                    from={`${process.env.PUBLIC_URL}/*`}
+                    to={`${process.env.PUBLIC_URL}/login`}
+                  />
+                )}
               </Router>
             </Fragment>
           )}

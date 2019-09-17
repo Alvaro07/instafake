@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/instafake/static/js/main.84ef17ba.chunk.js",
-    "main.js.map": "/instafake/static/js/main.84ef17ba.chunk.js.map",
+    "main.js": "/instafake/static/js/main.e6f37cda.chunk.js",
+    "main.js.map": "/instafake/static/js/main.e6f37cda.chunk.js.map",
     "runtime~main.js": "/instafake/static/js/runtime~main.e72f8f0f.js",
     "runtime~main.js.map": "/instafake/static/js/runtime~main.e72f8f0f.js.map",
-    "static/js/2.a7427a0a.chunk.js": "/instafake/static/js/2.a7427a0a.chunk.js",
-    "static/js/2.a7427a0a.chunk.js.map": "/instafake/static/js/2.a7427a0a.chunk.js.map",
+    "static/js/2.701a2120.chunk.js": "/instafake/static/js/2.701a2120.chunk.js",
+    "static/js/2.701a2120.chunk.js.map": "/instafake/static/js/2.701a2120.chunk.js.map",
     "index.html": "/instafake/index.html",
-    "precache-manifest.ec0ee38f3c763c95c91ed67cbff747bc.js": "/instafake/precache-manifest.ec0ee38f3c763c95c91ed67cbff747bc.js",
+    "precache-manifest.83d3e2461e30f5af3df53d130eae2f93.js": "/instafake/precache-manifest.83d3e2461e30f5af3df53d130eae2f93.js",
     "service-worker.js": "/instafake/service-worker.js"
   }
 }

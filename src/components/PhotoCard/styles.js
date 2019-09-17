@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { mediaQueries } from '../../styles/variables'
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md'
 import { FaRegComment } from 'react-icons/fa'
 import { fadeIn } from '../../styles/animation'
@@ -7,7 +6,6 @@ import { fadeIn } from '../../styles/animation'
 export const ListCard = styled.li`
   display: flex;
   flex-direction: column;
-
   border-radius: 5px;
   box-shadow: 0 1px 2px rgba(74, 74, 74, 0.1);
   min-height: 200px;
@@ -66,5 +64,15 @@ export const LikesText = styled.p`
 `
 
 export const TitleText = styled.p`
+  display: block;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
   font-family: var(--roboto);
+
+  & > span {
+    font-weight: 700;
+  }
 `

@@ -5,8 +5,8 @@ import { Context } from '../../Context'
 
 import { PhotoCard } from '../PhotoCard'
 import { UploadPhotoButton } from '../UploadPhotoButton'
-import { Loader } from '../Loader'
 import { Container, List } from './styles'
+import { Loader } from '../Loader'
 
 export const ListOfProfilePhotos = () => {
   const { user } = useContext(Context)
@@ -18,9 +18,7 @@ export const ListOfProfilePhotos = () => {
       <List>
         {loading && <Loader fullContainer fixed />}
         {value &&
-          value[0].photos
-            .reverse()
-            .map((data, i) => <PhotoCard src={data.url} title={data.description} key={i} />)}
+          value[0].photos.reverse().map((data, i) => <PhotoCard src={data.url} title={data.description} key={i} />)}
       </List>
     </Container>
   )

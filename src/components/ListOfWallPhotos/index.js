@@ -10,7 +10,11 @@ import { Loader } from '../Loader'
 
 export const ListOfWallPhotos = () => {
   const { user } = useContext(Context)
-  const [value, loading] = useCollectionData(firebase.db.collection('users').where('email', '==', user.email))
+  const [value, loading] = useCollectionData(
+    firebase.db.collection('users').where('email', '==', user.email ? user.email : null)
+  )
+
+  console.log(value)
 
   return (
     <Container>
@@ -20,7 +24,7 @@ export const ListOfWallPhotos = () => {
         {value &&
           value[0].photos
             .reverse()
-            .map((data, i) => <PhotoCard src={data.url} title={data.description} key={i} />)}
+            .map((data, i) => <PhotoCard user={user.email} src={data.url} title={data.description} key={i} />)}
       </List>
     </Container>
   )

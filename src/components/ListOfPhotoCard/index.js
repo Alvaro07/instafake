@@ -14,7 +14,7 @@ export const ListOfPhotoCard = () => {
     <Container>
       <UploadPhotoButton />
       <List>
-        {loading && <Loader />}
+        {loading && <Loader fullContainer fixed />}
         {value &&
           value[0].photos
             .reverse()

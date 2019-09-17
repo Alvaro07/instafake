@@ -6,6 +6,7 @@ import { Router, Redirect, Location } from '@reach/router'
 import { GlobalStyle, ResetStyle, PageWrap } from './styles/GlobalStyles'
 import { Home } from './pages/Home'
 import { Login } from './pages/Login'
+import { Profile } from './pages/Profile'
 import { Register } from './pages/Register'
 import { NotFound } from './pages/NotFound'
 import { Loader } from './components/Loader'
@@ -42,6 +43,7 @@ function App() {
         <Router>
           <NotFound default />
           <Home path={`${process.env.PUBLIC_URL}/`} />
+          <Profile path={`${process.env.PUBLIC_URL}/profile`} />
           <Redirect noThrow from={`${process.env.PUBLIC_URL}/login`} to={`${process.env.PUBLIC_URL}/`} />
           <Redirect noThrow from={`${process.env.PUBLIC_URL}/register`} to={`${process.env.PUBLIC_URL}/`} />
         </Router>

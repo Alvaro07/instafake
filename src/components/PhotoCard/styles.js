@@ -1,14 +1,23 @@
 import styled from 'styled-components'
+import { mediaQueries } from '../../styles/variables'
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md'
 import { FaRegComment } from 'react-icons/fa'
 import { fadeIn } from '../../styles/animation'
 
 export const ListCard = styled.li`
+  display: flex;
+  flex-direction: column;
+
   border-radius: 5px;
   box-shadow: 0 1px 2px rgba(74, 74, 74, 0.1);
   min-height: 200px;
+
   &:not(:last-child) {
     margin-bottom: 30px;
+
+    @media (min-width: ${mediaQueries.medium}) {
+      margin-bottom: 0;
+    }
   }
 `
 
@@ -26,6 +35,7 @@ export const Footer = styled.div`
   background-color: white;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  flex: 1;
 `
 
 export const Icons = styled.div`

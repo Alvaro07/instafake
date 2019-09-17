@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { mediaQueries } from '../../styles/variables'
 
 export const StickyHeader = styled.header`
   position: sticky;
@@ -29,11 +30,15 @@ export const Logo = styled.h1`
 
 export const Wrap = styled.div`
   width: 100%;
-  max-width: 960px;
+  max-width: 1024px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (min-width: ${mediaQueries.large}) {
+    padding: 0 20px;
+  }
 `
 
 export const UserName = styled.h3`

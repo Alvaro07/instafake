@@ -5,10 +5,10 @@ import { Context } from '../../Context'
 
 import { PhotoCard } from '../PhotoCard'
 import { UploadPhotoButton } from '../UploadPhotoButton'
-import { Container, List } from './styles'
 import { Loader } from '../Loader'
+import { Container, List } from './styles'
 
-export const ListOfPhotoCard = () => {
+export const ListOfProfilePhotos = () => {
   const { user } = useContext(Context)
   const [value, loading] = useCollectionData(firebase.db.collection('users').where('email', '==', user.email))
 

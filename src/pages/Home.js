@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react'
 import { Header } from '../components/Header'
-import { ListOfPhotoCard } from '../components/ListOfPhotoCard'
+import { ListOfWallPhotos } from '../components/ListOfWallPhotos'
 
 export const Home = () => {
   return (
     <Fragment>
       <Header />
-      <ListOfPhotoCard />
+      <ListOfWallPhotos />
     </Fragment>
   )
 }

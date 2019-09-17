@@ -11,14 +11,6 @@ export const ListCard = styled.li`
   border-radius: 5px;
   box-shadow: 0 1px 2px rgba(74, 74, 74, 0.1);
   min-height: 200px;
-
-  &:not(:last-child) {
-    margin-bottom: 30px;
-
-    @media (min-width: ${mediaQueries.medium}) {
-      margin-bottom: 0;
-    }
-  }
 `
 
 export const Image = styled.img`

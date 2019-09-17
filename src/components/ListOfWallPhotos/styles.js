@@ -9,4 +9,8 @@ export const List = styled.ul`
   max-width: 640px;
   width: 100%;
   padding: 20px;
+
+  & > li:not(:last-child) {
+    margin-bottom: 30px;
+  }
 `

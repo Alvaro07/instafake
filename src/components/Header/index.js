@@ -22,7 +22,9 @@ export const Header = () => {
           </Link>
         </Logo>
         <Fragment>
-          <UserName>{user.name ? user.name : user.email}</UserName>
+          <UserName>
+            <Link to={`${process.env.PUBLIC_URL}/profile`}>{user.name ? user.name : user.email}</Link>
+          </UserName>
           <Button text="Log out" onClick={signOut} />
         </Fragment>
       </Wrap>

@@ -5,7 +5,7 @@ export const StickyHeader = styled.header`
   top: 0;
   width: 100%;
   background-color: white;
-  padding: 5px 30px;
+  padding: 5px 20px;
   box-shadow: 0 1px 2px rgba(74, 74, 74, 0.1);
   z-index: 1;
 `

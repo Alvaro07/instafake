@@ -17,7 +17,7 @@ export const Header = () => {
     <StickyHeader>
       <Wrap>
         <Logo>
-          <Link to="/" component={Logo}>
+          <Link to={`${process.env.PUBLIC_URL}/`} component={Logo}>
             Instafake
           </Link>
         </Logo>

@@ -13,7 +13,7 @@ import {
 } from './styles'
 import { MdPerson } from 'react-icons/md'
 
-export const PhotoCard = ({ id, user, src, likes = 0, title, isLike, isProfile }) => {
+export const PhotoCard = ({ user, src, likes = 0, title, isProfile, isLike, timestamp, onLike }) => {
   const element = useRef(null)
   const [show, setShow] = useState(false)
   const IconHeart = isLike ? IconIsLiked : IconLike
@@ -42,7 +42,7 @@ export const PhotoCard = ({ id, user, src, likes = 0, title, isLike, isProfile }
           <Image src={src} alt={title} />
           <Footer>
             <Icons>
-              <IconHeart size="24px" />
+              <IconHeart size="24px" onClick={onLike} />
               <IconComment size="22px" />
             </Icons>
             <LikesText>{`${likes} like${likes > 1 || likes === 0 ? `s` : ``}`}</LikesText>

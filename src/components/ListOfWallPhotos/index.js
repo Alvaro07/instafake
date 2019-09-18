@@ -25,13 +25,34 @@ export const ListOfWallPhotos = () => {
     }
   }, [user])
 
+  const handleLike = data => {
+    setLoading(true)
+    firebase.likePhoto(data.user, data.timestamp, user.email).then(() => {
+      firebase.getFeedPictures(user.email).then(data => {
+        setPhotos(data)
+        setLoading(false)
+      })
+    })
+  }
+
   return (
     <Container>
       <UploadPhotoButton />
       <List>
-        {loading && <Loader fullContainer fixed />}
+        {loading && <Loader fullContainer fixed opacityBg />}
         {photos &&
-          photos.map((data, i) => <PhotoCard user={data.user} src={data.url} title={data.description} key={i} />)}
+          photos.map((data, i) => (
+            <PhotoCard
+              user={data.user}
+              src={data.url}
+              title={data.description}
+              key={i}
+              timestamp={data.timestamp}
+              likes={data.likes.length}
+              isLike={data.likes.includes(user.email) ? true : false}
+              onLike={() => handleLike(data)}
+            />
+          ))}
       </List>
     </Container>
   )

@@ -1,7 +1,19 @@
 import React, { useState, useEffect, useRef, Fragment } from 'react'
-import { ListCard, Image, Footer, LikesText, TitleText, Icons, IconLike, IconIsLiked, IconComment } from './styles'
+import {
+  ListCard,
+  Image,
+  Footer,
+  LikesText,
+  TitleText,
+  Icons,
+  IconLike,
+  IconIsLiked,
+  IconComment,
+  Header
+} from './styles'
+import { MdPerson } from 'react-icons/md'
 
-export const PhotoCard = ({ id, user, src, likes = 0, title, isLike }) => {
+export const PhotoCard = ({ id, user, src, likes = 0, title, isLike, isProfile }) => {
   const element = useRef(null)
   const [show, setShow] = useState(false)
   const IconHeart = isLike ? IconIsLiked : IconLike
@@ -21,6 +33,12 @@ export const PhotoCard = ({ id, user, src, likes = 0, title, isLike }) => {
     <ListCard ref={element}>
       {show && (
         <Fragment>
+          {!isProfile && (
+            <Header>
+              <MdPerson />
+              <h4>{user}</h4>
+            </Header>
+          )}
           <Image src={src} alt={title} />
           <Footer>
             <Icons>

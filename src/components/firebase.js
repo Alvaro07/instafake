@@ -50,7 +50,8 @@ class Firebase {
             .doc(email)
             .set({
               email: email,
-              photos: []
+              photos: [],
+              following: []
             })
             .then(() => resolve())
         })

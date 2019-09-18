@@ -14,8 +14,6 @@ export const ListOfWallPhotos = () => {
     firebase.db.collection('users').where('email', '==', user.email ? user.email : null)
   )
 
-  console.log(value)
-
   return (
     <Container>
       <UploadPhotoButton />

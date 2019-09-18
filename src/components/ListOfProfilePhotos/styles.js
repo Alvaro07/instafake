@@ -11,6 +11,14 @@ export const List = styled.ul`
   width: 100%;
   padding: 20px;
 
+  & > li:not(:last-child) {
+    margin-bottom: 30px;
+
+    @media (min-width: ${mediaQueries.medium}) {
+      margin-bottom: 0;
+    }
+  }
+
   @media (min-width: ${mediaQueries.medium}) {
     display: grid;
     grid-gap: 20px;

@@ -3,6 +3,10 @@ import { MdFavoriteBorder, MdFavorite } from 'react-icons/md'
 import { FaRegComment } from 'react-icons/fa'
 import { fadeIn } from '../../styles/animation'
 
+/**
+ * General container
+ */
+
 export const ListCard = styled.li`
   display: flex;
   flex-direction: column;
@@ -11,13 +15,39 @@ export const ListCard = styled.li`
   min-height: 200px;
 `
 
+/**
+ * header
+ */
+
+export const Header = styled.header`
+  display: flex;
+  align-items: center;
+
+  padding: 10px;
+  background-color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+
+  svg {
+    background-color: var(--light-grey);
+    padding: 5px;
+    border-radius: 50%;
+    font-size: 24px;
+    margin-right: 10px;
+  }
+
+  h4 {
+    font-weight: 700;
+    font-size: 14px;
+    font-family: var(--roboto);
+  }
+`
+
 export const Image = styled.img`
   ${fadeIn()}
   max-width: 100%;
   width: 100%;
   display: block;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
 `
 
 export const Footer = styled.div`
@@ -27,6 +57,10 @@ export const Footer = styled.div`
   border-bottom-right-radius: 5px;
   flex: 1;
 `
+
+/**
+ * Icons
+ */
 
 export const Icons = styled.div`
   display: flex;
@@ -56,6 +90,10 @@ export const IconComment = styled(FaRegComment)`
     color: var(--wine);
   }
 `
+
+/**
+ * Footer
+ */
 
 export const LikesText = styled.p`
   font-weight: 700;

@@ -79,6 +79,7 @@ export const IconLike = styled(MdFavoriteBorder)`
 `
 
 export const IconIsLiked = styled(MdFavorite)`
+  cursor: pointer;
   color: var(--wine);
 `
 

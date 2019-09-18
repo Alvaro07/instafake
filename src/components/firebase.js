@@ -151,6 +151,7 @@ class Firebase {
 
   /**
    * Get Feed wall function
+   * @param {string} email - The user email.
    */
 
   async getFeedPictures(email) {
@@ -178,6 +179,34 @@ class Firebase {
 
     pictures = pictures.sort((a, b) => a.timestamp - b.timestamp).reverse()
     return pictures
+  }
+
+  /**
+   * Like photo function
+   * @param {string} email - The user email.
+   */
+
+  async likePhoto(email, timestamp, userLike) {
+    let pictures = []
+    await this.db
+      .collection('users')
+      .doc(email)
+      .get()
+      .then(querySnapshot => {
+        pictures = querySnapshot.data().photos
+        pictures.forEach((data, i) => {
+          if (data.timestamp === timestamp) {
+            pictures[i].likes.includes(userLike)
+              ? (pictures[i].likes = pictures[i].likes.filter(e => e !== userLike))
+              : pictures[i].likes.push(userLike)
+          }
+        })
+      })
+
+    await this.db
+      .collection('users')
+      .doc('/' + email)
+      .update({ photos: pictures })
   }
 }
 

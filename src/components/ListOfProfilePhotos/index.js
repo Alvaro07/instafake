@@ -18,7 +18,9 @@ export const ListOfProfilePhotos = () => {
       <List>
         {loading && <Loader fullContainer fixed />}
         {value &&
-          value[0].photos.reverse().map((data, i) => <PhotoCard src={data.url} title={data.description} key={i} />)}
+          value[0].photos
+            .reverse()
+            .map((data, i) => <PhotoCard src={data.url} title={data.description} key={i} isProfile />)}
       </List>
     </Container>
   )

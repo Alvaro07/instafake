@@ -1,6 +1,5 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import firebase from '../firebase'
-import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { Context } from '../../Context'
 
 import { PhotoCard } from '../PhotoCard'
@@ -10,21 +9,29 @@ import { Loader } from '../Loader'
 
 export const ListOfWallPhotos = () => {
   const { user } = useContext(Context)
-  const [value, loading] = useCollectionData(
-    firebase.db.collection('users').where('email', '==', user.email ? user.email : null)
-  )
+  const [loading, setLoading] = useState(false)
+  const [photos, setPhotos] = useState([])
 
-  console.log(value)
+  useEffect(() => {
+    setLoading(true)
+
+    firebase.getFeedPictures(user.email).then(data => {
+      setPhotos(data)
+      setLoading(false)
+    })
+
+    return () => {
+      firebase.getFeedPictures(user.email)
+    }
+  }, [user])
 
   return (
     <Container>
       <UploadPhotoButton />
       <List>
         {loading && <Loader fullContainer fixed />}
-        {value &&
-          value[0].photos
-            .reverse()
-            .map((data, i) => <PhotoCard user={user.email} src={data.url} title={data.description} key={i} />)}
+        {photos &&
+          photos.map((data, i) => <PhotoCard user={data.user} src={data.url} title={data.description} key={i} />)}
       </List>
     </Container>
   )

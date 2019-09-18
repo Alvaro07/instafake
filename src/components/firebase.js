@@ -50,7 +50,8 @@ class Firebase {
             .doc(email)
             .set({
               email: email,
-              photos: []
+              photos: [],
+              following: []
             })
             .then(() => resolve())
         })
@@ -146,6 +147,37 @@ class Firebase {
         .then(doc => (doc.exists ? resolve(doc.data()) : reject('No such document!')))
         .catch(error => reject(error))
     })
+  }
+
+  /**
+   * Get Feed wall function
+   */
+
+  async getFeedPictures(email) {
+    let pictures = []
+
+    const followers = await this.db
+      .collection('users')
+      .where('email', '==', email)
+      .get()
+      .then(querySnapshot => {
+        let result
+        querySnapshot.forEach(doc => {
+          pictures = doc.data().photos
+          result = doc.data().following
+        })
+        return result
+      })
+
+    for (const user of followers) {
+      const photos = await this.getData('users', user).then(data => {
+        return data.photos
+      })
+      pictures = [...pictures, ...photos]
+    }
+
+    pictures = pictures.sort((a, b) => a.timestamp - b.timestamp).reverse()
+    return pictures
   }
 }
 

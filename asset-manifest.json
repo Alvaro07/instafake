@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/instafake/static/js/main.7d152e4c.chunk.js",
-    "main.js.map": "/instafake/static/js/main.7d152e4c.chunk.js.map",
+    "main.js": "/instafake/static/js/main.537b3fca.chunk.js",
+    "main.js.map": "/instafake/static/js/main.537b3fca.chunk.js.map",
     "runtime~main.js": "/instafake/static/js/runtime~main.e72f8f0f.js",
     "runtime~main.js.map": "/instafake/static/js/runtime~main.e72f8f0f.js.map",
     "static/js/2.79b9350c.chunk.js": "/instafake/static/js/2.79b9350c.chunk.js",
     "static/js/2.79b9350c.chunk.js.map": "/instafake/static/js/2.79b9350c.chunk.js.map",
     "index.html": "/instafake/index.html",
-    "precache-manifest.46039f95140b3c1ddbb5fcdfcac8887c.js": "/instafake/precache-manifest.46039f95140b3c1ddbb5fcdfcac8887c.js",
+    "precache-manifest.5a663e43c036c1a43184edcfeeb59550.js": "/instafake/precache-manifest.5a663e43c036c1a43184edcfeeb59550.js",
     "service-worker.js": "/instafake/service-worker.js"
   }
 }

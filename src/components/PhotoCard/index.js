@@ -41,10 +41,12 @@ export const PhotoCard = ({ user, src, likes = 0, title, isProfile, isLike, time
           )}
           <Image src={src} alt={title} />
           <Footer>
-            <Icons>
-              <IconHeart size="24px" onClick={onLike} />
-              <IconComment size="22px" />
-            </Icons>
+            {!isProfile && (
+              <Icons>
+                <IconHeart size="24px" onClick={onLike} />
+                <IconComment size="22px" />
+              </Icons>
+            )}
             <LikesText>{`${likes} like${likes > 1 || likes === 0 ? `s` : ``}`}</LikesText>
             <TitleText>
               {user && <span>{user}</span>} {title}

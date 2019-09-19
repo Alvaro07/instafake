@@ -36,10 +36,14 @@ export const SubTitle = styled.p`
 `
 
 export const Input = styled.input`
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
   width: 100%;
   margin-bottom: 15px;
   padding: 12px 8px;
-  border-radius: 3px;
+  border-radius: 2px;
   border: 1px solid var(--grey);
 
   &:focus {

@@ -48,6 +48,9 @@ export const Image = styled.img`
   max-width: 100%;
   width: 100%;
   display: block;
+
+  max-height: 450px;
+  object-fit: cover;
 `
 
 export const Footer = styled.div`

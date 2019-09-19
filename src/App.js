@@ -43,7 +43,7 @@ function App() {
         <Router>
           <NotFound default />
           <Home path={`${process.env.PUBLIC_URL}/`} />
-          <Profile path={`${process.env.PUBLIC_URL}/profile`} />
+          <Profile path={`${process.env.PUBLIC_URL}/profile/:profileName`} />
           <Redirect noThrow from={`${process.env.PUBLIC_URL}/login`} to={`${process.env.PUBLIC_URL}/`} />
           <Redirect noThrow from={`${process.env.PUBLIC_URL}/register`} to={`${process.env.PUBLIC_URL}/`} />
         </Router>

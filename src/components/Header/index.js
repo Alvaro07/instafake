@@ -24,7 +24,9 @@ export const Header = () => {
         </Logo>
         <Fragment>
           <UserName>
-            <StyledLink to={`${process.env.PUBLIC_URL}/profile`}>{user.name ? user.name : user.email}</StyledLink>
+            <StyledLink to={`${process.env.PUBLIC_URL}/profile/${user.name}`}>
+              {user.name ? user.name : user.email}
+            </StyledLink>
           </UserName>
           <Button text="Log out" onClick={signOut} />
         </Fragment>

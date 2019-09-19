@@ -28,4 +28,10 @@ export const List = styled.ul`
   @media (min-width: ${mediaQueries.large}) {
     grid-template-columns: repeat(4, 1fr);
   }
+
+  img {
+    @media (min-width: ${mediaQueries.medium}) {
+      height: 200px;
+    }
+  }
 `

@@ -1,16 +1,14 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import firebase from '../firebase'
-import { useCollectionData } from 'react-firebase-hooks/firestore'
-import { Context } from '../../Context'
+import { useDocumentData } from 'react-firebase-hooks/firestore'
 
 import { PhotoCard } from '../PhotoCard'
 import { UploadPhotoButton } from '../UploadPhotoButton'
 import { Container, List } from './styles'
 import { Loader } from '../Loader'
 
-export const ListOfProfilePhotos = () => {
-  const { user } = useContext(Context)
-  const [value, loading] = useCollectionData(firebase.db.collection('users').where('email', '==', user.email))
+export const ListOfProfilePhotos = props => {
+  const [value, loading] = useDocumentData(firebase.db.collection('users').doc(props.profile))
 
   return (
     <Container>
@@ -18,7 +16,7 @@ export const ListOfProfilePhotos = () => {
       <List>
         {loading && <Loader fullContainer fixed />}
         {value &&
-          value[0].photos
+          value.photos
             .reverse()
             .map((data, i) => <PhotoCard src={data.url} title={data.description} key={i} isProfile />)}
       </List>

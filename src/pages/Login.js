@@ -10,16 +10,23 @@ export const Login = () => {
 
   const onLogin = data => {
     setLoading(true)
-    firebase
-      .login(data.email, data.password)
-      .then(() => {
+    firebase.userExists(data.userName).then(doc => {
+      if (doc.exists) {
+        firebase
+          .login(doc.data().email, data.password)
+          .then(() => {
+            setLoading(false)
+            activateAuth()
+          })
+          .catch(error => {
+            setLoading(false)
+            setError(error.message)
+          })
+      } else {
         setLoading(false)
-        activateAuth()
-      })
-      .catch(error => {
-        setLoading(false)
-        setError(error.message)
-      })
+        setError('The user not exists')
+      }
+    })
   }
 
   return (
@@ -28,7 +35,7 @@ export const Login = () => {
       title="Login"
       subTitle="Enter your email & Password and try our fully featured instafake image platform."
       onSubmit={data => onLogin(data)}
-      error={error}
+      errorFirebase={error}
     />
   )
 }

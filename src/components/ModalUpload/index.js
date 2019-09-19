@@ -38,7 +38,7 @@ export const ModalUpload = ({ onClose }) => {
     e.preventDefault()
     setLoading(true)
     firebase
-      .uploadPhoto(image.file, description, user.email)
+      .uploadPhoto(image.file, description, user.name)
       .then(() => onClose())
       .catch(error => console.error(error))
   }

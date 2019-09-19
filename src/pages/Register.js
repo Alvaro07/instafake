@@ -10,16 +10,24 @@ export const Register = () => {
 
   const onRegister = data => {
     setLoading(true)
-    firebase
-      .register(data.email, data.password)
-      .then(() => {
+
+    firebase.userExists(data.userName).then(doc => {
+      if (doc.exists) {
+        setError('the user already exists')
         setLoading(false)
-        activateAuth()
-      })
-      .catch(error => {
-        setLoading(false)
-        setError(error.message)
-      })
+      } else {
+        firebase
+          .register(data.email, data.password, data.userName)
+          .then(() => {
+            setLoading(false)
+            activateAuth()
+          })
+          .catch(error => {
+            setLoading(false)
+            setError(error.message)
+          })
+      }
+    })
   }
 
   return (
@@ -28,7 +36,7 @@ export const Register = () => {
       title="Register"
       subTitle="Enter your email & Password, register now and enjoy fully instafake image platform"
       onSubmit={data => onRegister(data)}
-      error={error}
+      errorFirebase={error}
     />
   )
 }

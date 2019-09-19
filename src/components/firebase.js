@@ -22,7 +22,10 @@ class Firebase {
   }
 
   /**
+   *
    * Login function
+   * @param {string} email - The user email.
+   * @param {string} password - The user password.
    */
 
   login(email, password) {
@@ -35,31 +38,55 @@ class Firebase {
   }
 
   /**
+   *
+   * Check that user exists
+   * @param {string} userName - The user name.
+   */
+
+  userExists(userName) {
+    return new Promise(resolve => {
+      this.db
+        .collection('users')
+        .doc(userName)
+        .get()
+        .then(doc => resolve(doc))
+    })
+  }
+
+  /**
+   *
    * Register function
    * @param {string} email - The user email.
    * @param {string} password - The user password.
+   * @param {string} userName - The user name.
    */
 
-  register(email, password) {
+  register(email, password, userName) {
     return new Promise((resolve, reject) => {
       this.auth
         .createUserWithEmailAndPassword(email, password)
         .then(() => {
           this.db
             .collection('users')
-            .doc(email)
+            .doc(userName)
             .set({
+              displayName: userName,
               email: email,
               photos: [],
               following: []
             })
-            .then(() => resolve())
+            .then(() => {
+              this.auth.currentUser.updateProfile({ displayName: userName })
+              resolve()
+            })
+            .catch(error => error)
         })
         .catch(error => reject(error))
     })
   }
 
   /**
+   *
    * Logout function
    */
 
@@ -68,6 +95,7 @@ class Firebase {
   }
 
   /**
+   *
    * Get user function
    * @returns {string} The user.
    */
@@ -85,14 +113,15 @@ class Firebase {
   }
 
   /**
+   *
    * Function to upload a photo.
    * @param {file} file - The image file.
    * @param {string} description - The photo description.
    * @param {string} user - The user email.
    */
 
-  uploadPhoto(file, description, user) {
-    const ref = this.storage.ref(`images/${user}/${generateHash()}${file.name}`)
+  uploadPhoto(file, description, userName) {
+    const ref = this.storage.ref(`images/${userName}/${generateHash()}${file.name}`)
     const task = ref.put(file)
 
     return new Promise((resolve, reject) => {
@@ -108,7 +137,7 @@ class Firebase {
             const timestamp = date.getTime()
 
             const record = {
-              user: user,
+              user: userName,
               description: description,
               url: downloadURL,
               path: task.snapshot.ref.fullPath,
@@ -117,11 +146,11 @@ class Firebase {
               comments: []
             }
 
-            this.getData('users', user)
+            this.getData('users', userName)
               .then(data => {
                 this.db
                   .collection('users')
-                  .doc(user)
+                  .doc(userName)
                   .set({ photos: [...data.photos, record] }, { merge: true })
                 resolve()
               })
@@ -133,6 +162,7 @@ class Firebase {
   }
 
   /**
+   *
    * Get data function
    * @param {string} collection - The collection you want to search.
    * @param {string} doc - the document to access.
@@ -150,24 +180,21 @@ class Firebase {
   }
 
   /**
+   *
    * Get Feed wall function
-   * @param {string} email - The user email.
+   * @param {string} userName - The user name.
    */
 
-  async getFeedPictures(email) {
+  async getFeedPictures(userName) {
     let pictures = []
 
     const followers = await this.db
       .collection('users')
-      .where('email', '==', email)
+      .doc(userName)
       .get()
-      .then(querySnapshot => {
-        let result
-        querySnapshot.forEach(doc => {
-          pictures = doc.data().photos
-          result = doc.data().following
-        })
-        return result
+      .then(doc => {
+        pictures = doc.data().photos
+        return doc.data().following
       })
 
     for (const user of followers) {
@@ -182,15 +209,16 @@ class Firebase {
   }
 
   /**
+   *
    * Like photo function
-   * @param {string} email - The user email.
+   * @param {string} userName - The user name.
    */
 
-  async likePhoto(email, timestamp, userLike) {
+  async likePhoto(userName, timestamp, userLike) {
     let pictures = []
     await this.db
       .collection('users')
-      .doc(email)
+      .doc(userName)
       .get()
       .then(querySnapshot => {
         pictures = querySnapshot.data().photos
@@ -205,7 +233,7 @@ class Firebase {
 
     await this.db
       .collection('users')
-      .doc('/' + email)
+      .doc(userName)
       .update({ photos: pictures })
   }
 }

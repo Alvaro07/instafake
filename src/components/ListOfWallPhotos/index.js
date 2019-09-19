@@ -16,20 +16,20 @@ export const ListOfWallPhotos = () => {
   useEffect(() => {
     setLoading(true)
 
-    firebase.getFeedPictures(user.email).then(data => {
+    firebase.getFeedPictures(user.name).then(data => {
       setPhotos(data)
       setLoading(false)
     })
 
     return () => {
-      firebase.getFeedPictures(user.email)
+      firebase.getFeedPictures(user.name)
     }
   }, [user])
 
   const handleLike = data => {
     setLikeLoading(true)
-    firebase.likePhoto(data.user, data.timestamp, user.email).then(() => {
-      firebase.getFeedPictures(user.email).then(data => {
+    firebase.likePhoto(data.user, data.timestamp, user.name).then(() => {
+      firebase.getFeedPictures(user.name).then(data => {
         setPhotos(data)
         setLikeLoading(false)
       })
@@ -51,7 +51,7 @@ export const ListOfWallPhotos = () => {
               key={i}
               timestamp={data.timestamp}
               likes={data.likes.length}
-              isLike={data.likes.includes(user.email) ? true : false}
+              isLike={data.likes.includes(user.name) ? true : false}
               onLike={() => handleLike(data)}
             />
           ))}

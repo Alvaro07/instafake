@@ -56,11 +56,7 @@ function App() {
                 <Register path={`${process.env.PUBLIC_URL}/register`} />
 
                 {location.pathname !== `${process.env.PUBLIC_URL}/register` && (
-                  <Redirect
-                    noThrow
-                    from={`${process.env.PUBLIC_URL}/*`}
-                    to={`${process.env.PUBLIC_URL}/login`}
-                  />
+                  <Redirect noThrow from={`${process.env.PUBLIC_URL}/*`} to={`${process.env.PUBLIC_URL}/login`} />
                 )}
               </Router>
             </Fragment>

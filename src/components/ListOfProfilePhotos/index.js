@@ -1,7 +1,6 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import firebase from '../firebase'
 import { useDocumentData } from 'react-firebase-hooks/firestore'
-import { Context } from '../../Context'
 
 import { PhotoCard } from '../PhotoCard'
 import { UploadPhotoButton } from '../UploadPhotoButton'
@@ -9,7 +8,6 @@ import { Container, List } from './styles'
 import { Loader } from '../Loader'
 
 export const ListOfProfilePhotos = props => {
-  const { user } = useContext(Context)
   const [value, loading] = useDocumentData(firebase.db.collection('users').doc(props.profile))
 
   return (

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { mediaQueries } from '../../styles/variables'
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md'
 import { FaRegComment } from 'react-icons/fa'
 import { fadeIn } from '../../styles/animation'
@@ -48,6 +49,13 @@ export const Image = styled.img`
   max-width: 100%;
   width: 100%;
   display: block;
+
+  max-height: 320px;
+  object-fit: cover;
+
+  @media (min-width: ${mediaQueries.medium}) {
+    height: 200px;
+  }
 `
 
 export const Footer = styled.div`

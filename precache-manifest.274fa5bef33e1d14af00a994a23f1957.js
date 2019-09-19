@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9b7f467f64a778bc196ae648d62c88c3",
+    "revision": "6eace595547dab8fd2d1a0b73e4a74ae",
     "url": "/instafake/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/instafake/static/js/2.c38bb516.chunk.js"
   },
   {
-    "revision": "65b46210b02024fc0b19",
-    "url": "/instafake/static/js/main.941ad446.chunk.js"
+    "revision": "54bff5dd50a624d61b31",
+    "url": "/instafake/static/js/main.a7ec74be.chunk.js"
   },
   {
     "revision": "28e0d5bc8a759863aff1",

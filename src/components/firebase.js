@@ -76,8 +76,7 @@ class Firebase {
               following: []
             })
             .then(() => {
-              this.auth.currentUser.updateProfile({ displayName: userName })
-              resolve()
+              this.auth.currentUser.updateProfile({ displayName: userName }).then(() => resolve())
             })
             .catch(error => error)
         })
@@ -137,6 +136,7 @@ class Firebase {
             const timestamp = date.getTime()
 
             const record = {
+              name: task.snapshot.ref.name,
               user: userName,
               description: description,
               url: downloadURL,
@@ -197,8 +197,8 @@ class Firebase {
         return doc.data().following
       })
 
-    for (const user of followers) {
-      const photos = await this.getData('users', user).then(data => {
+    for (const followUser of followers) {
+      const photos = await this.getData('users', followUser).then(data => {
         return data.photos
       })
       pictures = [...pictures, ...photos]
@@ -230,6 +230,32 @@ class Firebase {
           }
         })
       })
+
+    await this.db
+      .collection('users')
+      .doc(userName)
+      .update({ photos: pictures })
+  }
+
+  /**
+   *
+   * Delete photo form user
+   * @param {string} userName - The user name.
+   */
+
+  async deletePhoto(userName, photoPath, fileName) {
+    let pictures = []
+    await this.db
+      .collection('users')
+      .doc(userName)
+      .get()
+      .then(querySnapshot => {
+        pictures = querySnapshot.data().photos
+        pictures = pictures.filter(e => e.path !== photoPath)
+      })
+
+    const ref = this.storage.ref(`images/${userName}/${fileName}`)
+    await ref.delete()
 
     await this.db
       .collection('users')

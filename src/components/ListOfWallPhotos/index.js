@@ -14,16 +14,13 @@ export const ListOfWallPhotos = () => {
   const [photos, setPhotos] = useState([])
 
   useEffect(() => {
-    setLoading(true)
+    if (!user) return
 
+    setLoading(true)
     firebase.getFeedPictures(user.name).then(data => {
       setPhotos(data)
       setLoading(false)
     })
-
-    return () => {
-      firebase.getFeedPictures(user.name)
-    }
   }, [user])
 
   const handleLike = data => {
@@ -45,7 +42,7 @@ export const ListOfWallPhotos = () => {
         {photos &&
           photos.map((data, i) => (
             <PhotoCard
-              user={data.user}
+              userName={data.user}
               src={data.url}
               title={data.description}
               key={i}

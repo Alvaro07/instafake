@@ -9,11 +9,13 @@ import {
   IconLike,
   IconIsLiked,
   IconComment,
+  DeleteIcon,
   Header
 } from './styles'
+import { StyledLink } from '../../styles/GlobalStyles'
 import { MdPerson } from 'react-icons/md'
 
-export const PhotoCard = ({ user, src, likes = 0, title, isProfile, isLike, timestamp, onLike }) => {
+export const PhotoCard = ({ userName, src, likes = 0, title, isProfile, isMyProfile, isLike, onLike, onDelete }) => {
   const element = useRef(null)
   const [show, setShow] = useState(false)
   const IconHeart = isLike ? IconIsLiked : IconLike
@@ -36,10 +38,14 @@ export const PhotoCard = ({ user, src, likes = 0, title, isProfile, isLike, time
           {!isProfile && (
             <Header>
               <MdPerson />
-              <h4>{user}</h4>
+              <h4>
+                <StyledLink to={`${process.env.PUBLIC_URL}/profile/${userName}`}>{userName}</StyledLink>
+              </h4>
             </Header>
           )}
+
           <Image src={src} alt={title} />
+          {isMyProfile && <DeleteIcon size="10px" onClick={onDelete} />}
           <Footer>
             {!isProfile && (
               <Icons>
@@ -49,7 +55,7 @@ export const PhotoCard = ({ user, src, likes = 0, title, isProfile, isLike, time
             )}
             <LikesText>{`${likes} like${likes > 1 || likes === 0 ? `s` : ``}`}</LikesText>
             <TitleText>
-              {user && <span>{user}</span>} {title}
+              {userName && <span>{userName}</span>} {title}
             </TitleText>
           </Footer>
         </Fragment>

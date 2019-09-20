@@ -5,4 +5,5 @@ export const PhotoButton = styled(Button)`
   position: fixed;
   bottom: 30px;
   right: 30px;
+  z-index: 3;
 `

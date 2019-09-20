@@ -9,10 +9,10 @@ import { Loader } from '../Loader'
 import { Context } from '../../Context'
 
 export const ListOfProfilePhotos = props => {
-  const [value, loading] = useDocumentData(firebase.db.collection('users').doc(props.profile))
   const { user } = useContext(Context)
   const [isMyProfile, setIsMyProfile] = useState(false)
   const [deleteLoading, setDeleteLoading] = useState(false)
+  const [value, loading] = useDocumentData(firebase.db.collection('users').doc(props.profile))
 
   useEffect(() => {
     if (user.name === props.profile) setIsMyProfile(true)

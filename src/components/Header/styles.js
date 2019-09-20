@@ -8,7 +8,7 @@ export const StickyHeader = styled.header`
   background-color: white;
   padding: 5px 20px;
   box-shadow: 0 1px 2px rgba(74, 74, 74, 0.1);
-  z-index: 1;
+  z-index: 2;
 `
 
 export const Logo = styled.h1`

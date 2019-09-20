@@ -95,7 +95,8 @@ export const StyledLink = styled(Link)`
   color: var(--dark-grey);
   font-weight: bold;
   transition: 0.3s all ease;
-
+  text-decoration: none;
+  
   &:hover {
     color: var(--dark-orange);
   }

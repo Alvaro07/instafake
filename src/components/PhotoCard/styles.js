@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { MdFavoriteBorder, MdFavorite } from 'react-icons/md'
+import { MdFavoriteBorder, MdFavorite, MdDeleteForever } from 'react-icons/md'
 import { FaRegComment } from 'react-icons/fa'
 import { fadeIn } from '../../styles/animation'
 
@@ -10,6 +10,7 @@ import { fadeIn } from '../../styles/animation'
 export const ListCard = styled.li`
   display: flex;
   flex-direction: column;
+  position: relative;
   border-radius: 5px;
   box-shadow: 0 1px 2px rgba(74, 74, 74, 0.1);
   min-height: 200px;
@@ -51,6 +52,11 @@ export const Image = styled.img`
 
   max-height: 450px;
   object-fit: cover;
+
+  &:first-child {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
 `
 
 export const Footer = styled.div`
@@ -92,6 +98,32 @@ export const IconComment = styled(FaRegComment)`
 
   &:hover {
     color: var(--wine);
+  }
+`
+
+export const DeleteIcon = styled(MdDeleteForever)`
+  position: absolute;
+  right: -7px;
+  top: -7px;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  cursor: pointer;
+
+  transition: 0.2s all ease;
+  background-color: var(--wine);
+  border-radius: 5px;
+  border: 2px solid white;
+  width: 35px;
+  height: 35px;
+  padding: 4px;
+
+  &:hover {
+    background-color: var(--dark-grey);
   }
 `
 

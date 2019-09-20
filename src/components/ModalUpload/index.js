@@ -74,7 +74,7 @@ export const ModalUpload = ({ onClose, onUpdateWall }) => {
           <Button text="Upload image" secondary disabled={description && image ? null : true} />
         </FormLine>
 
-        {loading && <Loader fullContainer opacityBg />}
+        {loading && <Loader fullContainer opacityBg fixed />}
       </Form>
     </ModalContent>
   )

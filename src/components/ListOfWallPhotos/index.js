@@ -10,12 +10,11 @@ import { Loader } from '../Loader'
 export const ListOfWallPhotos = () => {
   const { user } = useContext(Context)
   const [loading, setLoading] = useState(false)
-  const [likeLoading, setLikeLoading] = useState(false)
+  const [otherLoading, setOtherLoading] = useState(false)
   const [photos, setPhotos] = useState([])
 
   useEffect(() => {
     if (!user) return
-
     setLoading(true)
     firebase.getFeedPictures(user.name).then(data => {
       setPhotos(data)
@@ -24,21 +23,29 @@ export const ListOfWallPhotos = () => {
   }, [user])
 
   const handleLike = data => {
-    setLikeLoading(true)
+    setOtherLoading(true)
     firebase.likePhoto(data.user, data.timestamp, user.name).then(() => {
       firebase.getFeedPictures(user.name).then(data => {
         setPhotos(data)
-        setLikeLoading(false)
+        setOtherLoading(false)
       })
+    })
+  }
+
+  const getPhotos = () => {
+    setOtherLoading(true)
+    firebase.getFeedPictures(user.name).then(data => {
+      setPhotos(data)
+      setOtherLoading(false)
     })
   }
 
   return (
     <Container>
-      <UploadPhotoButton />
+      <UploadPhotoButton onFinish={getPhotos} />
       <List>
         {loading && <Loader fullContainer fixed />}
-        {likeLoading && <Loader fullContainer fixed opacityBg />}
+        {otherLoading && <Loader fullContainer fixed opacityBg />}
         {photos &&
           photos.map((data, i) => (
             <PhotoCard

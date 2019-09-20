@@ -5,7 +5,7 @@ import { ModalContent, CloseButton, Form, Title, FormLine, Label, Textarea, Erro
 import { Button } from '../Button'
 import { Loader } from '../Loader'
 
-export const ModalUpload = ({ onClose }) => {
+export const ModalUpload = ({ onClose, onUpdateWall }) => {
   const [description, setDescription] = useState('')
   const [image, setImage] = useState(false)
   const [error, setError] = useState(false)
@@ -39,7 +39,10 @@ export const ModalUpload = ({ onClose }) => {
     setLoading(true)
     firebase
       .uploadPhoto(image.file, description, user.name)
-      .then(() => onClose())
+      .then(() => {
+        onUpdateWall()
+        onClose()
+      })
       .catch(error => console.error(error))
   }
 

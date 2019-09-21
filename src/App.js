@@ -4,6 +4,7 @@ import { Context } from './Context'
 import { Router, Redirect, Location } from '@reach/router'
 
 import { GlobalStyle, ResetStyle, PageWrap } from './styles/GlobalStyles'
+import { HelperClasses } from './styles/HelperClasses'
 import { Home } from './pages/Home'
 import { Login } from './pages/Login'
 import { Profile } from './pages/Profile'
@@ -36,6 +37,7 @@ function App() {
     <PageWrap>
       <ResetStyle />
       <GlobalStyle />
+      <HelperClasses />
 
       {initializing ? (
         <Loader />

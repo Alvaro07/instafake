@@ -5,7 +5,8 @@ export const ButtonTag = styled.button`
   align-items: center;
 
   width: ${props => (props.fullWidth ? '100%' : null)};
-  padding: 10px 15px;
+  padding: 0 15px;
+  height: 37px;
 
   font-size: 14px;
   font-weight: 700;

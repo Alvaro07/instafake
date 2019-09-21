@@ -3,7 +3,8 @@ import { Button } from '../Button'
 
 export const PhotoButton = styled(Button)`
   position: fixed;
-  bottom: 30px;
+  bottom: 15px;
   right: 30px;
   z-index: 3;
+  height: auto;
 `

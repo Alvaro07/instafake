@@ -82,7 +82,8 @@ export const GlobalStyle = createGlobalStyle`
     justify-content: center;
     padding: 30px;
   }
-  
+
+
 `
 
 export const PageWrap = styled.div`
@@ -96,7 +97,7 @@ export const StyledLink = styled(Link)`
   font-weight: bold;
   transition: 0.3s all ease;
   text-decoration: none;
-  
+
   &:hover {
     color: var(--dark-orange);
   }

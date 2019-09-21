@@ -2,7 +2,7 @@ import React, { useContext, Fragment } from 'react'
 import firebase from '../firebase'
 import { Link } from '@reach/router'
 import { Context } from '../../Context'
-// import { MdPersonAdd } from 'react-icons/md'
+import { MdPersonAdd } from 'react-icons/md'
 
 import { StickyHeader, Logo, Wrap, UserName } from './styles'
 import { Button } from '../Button'
@@ -30,7 +30,7 @@ export const Header = () => {
               {user.name ? user.name : user.email}
             </StyledLink>
           </UserName>
-          {/* <Button icon={MdPersonAdd} secondary /> */}
+          <Button icon={MdPersonAdd} iconSize="24px" secondary className="margin-right-10" />
           <Button text="Log out" onClick={signOut} />
         </Fragment>
       </Wrap>

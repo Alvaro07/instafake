@@ -262,6 +262,33 @@ class Firebase {
       .doc(userName)
       .update({ photos: pictures })
   }
+
+  /**
+   *
+   * Follow / Unfollow user
+   * @param {string} userName - The user name.
+   * @param {string} userFollow - The user to follow/unfollow.
+   * @param {boolean} mode - True or false to follow or unfollow
+   */
+
+  async followUser(userName, userFollow, mode) {
+    let followers = await this.db
+      .collection('users')
+      .doc(userName)
+      .get()
+      .then(doc => doc.data().following)
+
+    if (mode) {
+      await followers.push(userFollow)
+    } else {
+      followers = await followers.filter(e => e !== userFollow)
+    }
+
+    await this.db
+      .collection('users')
+      .doc(userName)
+      .update({ following: followers })
+  }
 }
 
 export default new Firebase()

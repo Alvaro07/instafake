@@ -45,7 +45,7 @@ export const Header = () => {
         </Fragment>
       </Wrap>
 
-      {userModal && (
+      {!userModal && (
         <Modal onClose={() => setUserModal(false)}>
           <SearchUserForm />
         </Modal>

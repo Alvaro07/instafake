@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { FaUserPlus, FaUserMinus } from 'react-icons/fa'
 
 export const Results = styled.ul`
   /* height: 300px; */
@@ -51,4 +52,12 @@ export const FollowButton = styled.button`
   &:hover {
     background-color: var(--light-grey);
   }
+`
+
+export const FollowIcon = styled(FaUserPlus)`
+  color: var(--green);
+`
+
+export const UnFollowIcon = styled(FaUserMinus)`
+  color: var(--wine);
 `

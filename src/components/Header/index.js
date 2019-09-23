@@ -20,6 +20,10 @@ export const Header = () => {
     removeAuth()
   }
 
+  const handleClose = () => {
+    setUserModal(false)
+  }
+
   return (
     <StickyHeader>
       <Wrap>
@@ -46,7 +50,7 @@ export const Header = () => {
       </Wrap>
 
       {userModal && (
-        <Modal onClose={() => setUserModal(false)}>
+        <Modal onClose={handleClose}>
           <SearchUserForm />
         </Modal>
       )}

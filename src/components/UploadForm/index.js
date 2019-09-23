@@ -5,7 +5,7 @@ import { Button } from '../Button'
 import { Loader } from '../Loader'
 import { Form, Title, FormLine, Label, Textarea, Error } from '../Modal/styles'
 
-export const UploadForm = ({ onClose, onUpdateWall }) => {
+export const UploadForm = ({ onUpdateWall }) => {
   const { user } = useContext(Context)
   const [description, setDescription] = useState('')
   const [image, setImage] = useState(false)
@@ -40,13 +40,12 @@ export const UploadForm = ({ onClose, onUpdateWall }) => {
       .uploadPhoto(image.file, description, user.name)
       .then(() => {
         onUpdateWall()
-        onClose()
       })
       .catch(error => console.error(error))
   }
 
   return (
-    <Form onSubmit={handleSubmit} onClose={onClose}>
+    <Form onSubmit={handleSubmit}>
       <Title>Upload your photo</Title>
       <p>Choose your photo and upload it to instafake to share it with your friends</p>
 

@@ -1,19 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import firebase from '../firebase'
+import { Context } from '../../Context'
 import { useInputValue } from '../../hooks/useInputValue'
-import { useCollection } from 'react-firebase-hooks/firestore'
+import { useCollection, useDocumentData } from 'react-firebase-hooks/firestore'
 
 import { Loader } from '../Loader'
 import { Form, Title, FormLine, Label, Error, Input } from '../Modal/styles'
-import { Results, User, ImageProfile, FollowButton } from './styles'
+import { Results, User, ImageProfile, FollowButton, FollowIcon, UnFollowIcon } from './styles'
 import { MdPerson } from 'react-icons/md'
-import { FaUserPlus, FaUserMinus } from 'react-icons/fa'
 
 export const SearchUserForm = () => {
   const userSearch = useInputValue('')
+  const { user } = useContext(Context)
   const [users, setUsers] = useState([])
-  const [usersLoading, setUsersLoading] = useState([])
   const [value, loading, error] = useCollection(firebase.db.collection('users'))
+  const [userValue] = useDocumentData(firebase.db.collection('users').doc(user.name))
 
   const searchUser = () => {
     if (userSearch.value.length === 0) {
@@ -25,8 +26,17 @@ export const SearchUserForm = () => {
     let results = value.docs.filter(e => {
       return e.id.match(regex)
     })
-    results = results.map(e => e.id)
+    results = results.map(e => e.id).filter(e => e !== user.name)
     setUsers(results)
+  }
+
+  const handleFollow = (e, userFollow) => {
+    e.preventDefault()
+    if (userValue.following.includes(userFollow)) {
+      firebase.followUser(user.name, userFollow, false)
+    } else {
+      firebase.followUser(user.name, userFollow, true)
+    }
   }
 
   return (
@@ -38,21 +48,24 @@ export const SearchUserForm = () => {
         <Input value={userSearch} placeholder="user" onKeyUp={searchUser} {...userSearch} />
       </FormLine>
       <Results>
-        {users.map((user, i) => {
+        {users.map((userName, i) => {
           return (
             <User key={i}>
               {loading && <Loader />}
               <ImageProfile>
                 <MdPerson size="18px" />
               </ImageProfile>
-              <h4 className="bold">{user}</h4>
-              <FollowButton>
-                <FaUserPlus size="18px" />
+              <h4 className="bold">{userName}</h4>
+              <FollowButton onClick={e => handleFollow(e, userName)}>
+                {userValue.following.includes(userName) ? <UnFollowIcon size="18px" /> : <FollowIcon size="18px" />}
               </FollowButton>
             </User>
           )
         })}
       </Results>
+      <FormLine>
+        <Error>{error}</Error>
+      </FormLine>
     </Form>
   )
 }

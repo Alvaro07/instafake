@@ -57,7 +57,7 @@ export const SearchUserForm = () => {
               </ImageProfile>
               <h4 className="bold">{userName}</h4>
               <FollowButton onClick={e => handleFollow(e, userName)}>
-                {userValue.following.includes(userName) ? <FollowIcon size="18px" /> : <UnFollowIcon size="18px" />}
+                {userValue.following.includes(userName) ? <UnFollowIcon size="18px" /> : <FollowIcon size="18px" />}
               </FollowButton>
             </User>
           )

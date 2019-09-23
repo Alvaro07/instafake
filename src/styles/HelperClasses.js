@@ -13,4 +13,8 @@ const generateSpaces = (positions, prop, times) => {
 export const HelperClasses = createGlobalStyle`
   ${generateSpaces(['', '-top', '-right', '-bottom', '-left'], 'margin', 5)}
   ${generateSpaces(['', '-top', '-right', '-bottom', '-left'], 'padding', 5)}
+
+  .bold {
+    font-weight: 700;
+  }
 `

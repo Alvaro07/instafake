@@ -3,7 +3,7 @@ import { Context } from '../../Context'
 import firebase from '../firebase'
 import { Button } from '../Button'
 import { Loader } from '../Loader'
-import { Form, Title, FormLine, Label, Textarea, Error } from './styles'
+import { Form, Title, FormLine, Label, Textarea, Error } from '../Modal/styles'
 
 export const UploadForm = ({ onClose, onUpdateWall }) => {
   const { user } = useContext(Context)

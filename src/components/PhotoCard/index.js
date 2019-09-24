@@ -18,6 +18,7 @@ import { MdPerson } from 'react-icons/md'
 export const PhotoCard = ({ userName, src, likes = 0, title, isProfile, isMyProfile, isLike, onLike, onDelete }) => {
   const element = useRef(null)
   const [show, setShow] = useState(false)
+
   const IconHeart = isLike ? IconIsLiked : IconLike
 
   useEffect(() => {

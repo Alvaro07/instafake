@@ -11,7 +11,7 @@ import { MdPerson } from 'react-icons/md'
 
 export const SearchUserForm = () => {
   const userSearch = useInputValue('')
-  const { user } = useContext(Context)
+  const { user, addUser } = useContext(Context)
   const [users, setUsers] = useState([])
   const [value, loading, error] = useCollection(firebase.db.collection('users'))
   const [userValue] = useDocumentData(firebase.db.collection('users').doc(user.name))
@@ -33,9 +33,13 @@ export const SearchUserForm = () => {
   const handleFollow = (e, userFollow) => {
     e.preventDefault()
     if (userValue.following.includes(userFollow)) {
-      firebase.followUser(user.name, userFollow, false)
+      firebase.followUser(user.name, userFollow, false).then(followUsers => {
+        addUser({ ...user, following: followUsers })
+      })
     } else {
-      firebase.followUser(user.name, userFollow, true)
+      firebase.followUser(user.name, userFollow, true).then(followUsers => {
+        addUser({ ...user, following: followUsers })
+      })
     }
   }
 

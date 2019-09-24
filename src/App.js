@@ -22,7 +22,7 @@ function App() {
       .then(data => {
         if (data) {
           if (!user || data.email !== user.email) {
-            addUser({ email: data.email, name: data.displayName })
+            addUser({ email: data.email, name: data.displayName, following: [] })
           }
           activateAuth()
           setInitializing(false)

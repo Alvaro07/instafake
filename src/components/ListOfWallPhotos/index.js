@@ -44,7 +44,7 @@ export const ListOfWallPhotos = () => {
     <Container>
       <UploadPhotoButton onFinish={getPhotos} />
       <List>
-        {loading && <Loader fullContainer fixed />}
+        {loading && <Loader fullContainer fixed opacityBg />}
         {otherLoading && <Loader fullContainer fixed opacityBg />}
         {photos &&
           photos.map((data, i) => (

@@ -288,6 +288,8 @@ class Firebase {
       .collection('users')
       .doc(userName)
       .update({ following: followers })
+
+    return followers
   }
 }
 

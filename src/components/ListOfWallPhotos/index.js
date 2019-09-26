@@ -4,7 +4,7 @@ import { Context } from '../../Context'
 
 import { PhotoCard } from '../PhotoCard'
 import { UploadPhotoButton } from '../UploadPhotoButton'
-import { Container, List } from './styles'
+import { Container, List, NoPhotos } from './styles'
 import { Loader } from '../Loader'
 import { Button } from '../Button'
 
@@ -50,7 +50,7 @@ export const ListOfWallPhotos = () => {
     photos.length % 10 === 0 ? (
       <Button text="more photos" onClick={() => getMorePhotos(photoNumber)} />
     ) : (
-      <p>There are no more photos to show</p>
+      <NoPhotos>There are no more photos to show</NoPhotos>
     )
 
   return (

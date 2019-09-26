@@ -7,17 +7,19 @@ import { Modal } from '../Modal'
 export const UploadPhotoButton = ({ onFinish }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false)
 
-  const hanldeClose = () => {
+  const uploadClose = () => {
+    if (onFinish) {
+      onFinish()
+    }
     setModalIsOpen(false)
-    onFinish()
   }
 
   return (
     <Fragment>
       <PhotoButton secondary round icon={MdPhotoCamera} iconSize="30px" onClick={() => setModalIsOpen(true)} />
       {modalIsOpen && (
-        <Modal>
-          <UploadForm onUpdateWall={hanldeClose} />
+        <Modal onClose={() => setModalIsOpen(false)}>
+          <UploadForm onUpdateWall={uploadClose} />
         </Modal>
       )}
     </Fragment>

@@ -12,7 +12,7 @@ https://alvaro07.github.io/instafake/
 
 ---
 
-![alt text](instafake01.png 'home')
+![alt text](instafake01.jpg 'home')
 
 ---
 

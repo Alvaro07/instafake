@@ -90,6 +90,8 @@ export const PageWrap = styled.div`
   height: 100%;
   min-height: 100%;
   overflow: auto;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
 `
 
 export const StyledLink = styled(Link)`

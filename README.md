@@ -8,12 +8,12 @@ https://alvaro07.github.io/instafake/
 
 ---
 
-![alt text](instafake.png 'login')
+![alt text](images/instafake.png 'login')
 
 ---
 
-![alt text](instafake01.jpg 'home')
+![alt text](images/instafake01.jpg 'home')
 
 ---
 
-![alt text](instafake02.jpg 'profile')
+![alt text](images/instafake02.jpg 'profile')
